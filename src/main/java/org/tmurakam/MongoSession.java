@@ -35,7 +35,9 @@ public class MongoSession implements ExpiringSession {
 
     @Override
     public boolean isExpired() {
-        return false;
+        long now = System.currentTimeMillis();
+
+        return lastAccessedTime + maxInactiveIntervalInSeconds * 1000 <= now;
     }
 
     @Override
