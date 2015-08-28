@@ -7,6 +7,7 @@ import org.springframework.session.ExpiringSession;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 /**
  * MongoSession for spring session
@@ -27,6 +28,8 @@ public class MongoSession implements ExpiringSession {
     private Map<String,Object> attributes;
 
     public MongoSession() {
+        id = UUID.randomUUID().toString();
+
         attributes = new HashMap<>();
     }
 
