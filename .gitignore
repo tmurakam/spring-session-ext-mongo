@@ -1,3 +1,9 @@
 *~
+*.bak
+
 .idea/
 .gradle/
+*.iml
+
+build/
+
