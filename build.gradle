@@ -15,7 +15,11 @@ repositories {
 dependencies {
     compile "org.springframework:spring-context:$springVersion"
     compile "org.springframework:spring-web:$springVersion"
+    compile "org.springframework:spring-test:$springVersion"
+
     compile "org.springframework.session:spring-session:1.0.2.RELEASE"
+
+    compile 'org.mongodb:mongodb-driver:3.0.2'
 
     providedCompile "org.projectlombok:lombok:1.16.2"
     providedCompile "javax.servlet:javax.servlet-api:3.0.1"
