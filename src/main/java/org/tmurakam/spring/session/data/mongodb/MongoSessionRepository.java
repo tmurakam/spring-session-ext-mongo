@@ -47,8 +47,8 @@ public class MongoSessionRepository implements SessionRepository<MongoSession> {
 
         expireCounter++;
         if (expireCounter > 100){
-            removeAllExpiredSessions();
             expireCounter = 0;
+            removeAllExpiredSessions();
         }
 
         return session;
@@ -57,7 +57,13 @@ public class MongoSessionRepository implements SessionRepository<MongoSession> {
     @Override
     public MongoSession getSession(String id) {
         MongoSession session = mongoTemplate.findOne(createQueryById(id), MongoSession.class);
+        if (session == null) return null;
+
         session.deserializeAttributes();
+        if (session.isExpired()) {
+            delete(session.getId());
+            return null;
+        }
         session.setLastAccessedTime(System.currentTimeMillis());
         return session;
     }
