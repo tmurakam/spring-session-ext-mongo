@@ -1,10 +1,9 @@
-group 'org.tmurakam'
-version '1.0-SNAPSHOT'
-
 apply plugin: 'java'
+apply plugin: 'maven'
 apply plugin: 'idea'
 
-apply plugin: 'maven-publish'
+group 'org.tmurakam'
+version '0.9.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
 
@@ -56,9 +55,32 @@ task integrationTest(type: Test) {
 }
 
 task sourcesJar(type: Jar) {
+    classifier = 'sources'
     from sourceSets.main.allJava
 }
 
+artifacts {
+    archives sourcesJar
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file://${buildDir}/repo")
+            pom.artifactId = "spring-data-mongodb"
+            pom.project {
+                licenses {
+                    license {
+                        name "BSD License"
+                        url "https://github.com/tmurakam/spring-session-mongodb/blob/master/LICENSE.txt"
+                        distribution 'repo'
+                    }
+                }
+            }
+        }
+    }
+}
+/*
 publishing {
     publications {
         maven(MavenPublication) {
@@ -77,3 +99,4 @@ publishing {
         }
     }
 }
+*/
