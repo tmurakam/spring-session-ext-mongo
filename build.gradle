@@ -6,7 +6,9 @@ apply plugin: 'war'
 
 sourceCompatibility = 1.8
 
-ext.springVersion = "4.2.0.RELEASE"
+ext {
+    springVersion = "4.2.0.RELEASE"
+}
 
 repositories {
     mavenCentral()
