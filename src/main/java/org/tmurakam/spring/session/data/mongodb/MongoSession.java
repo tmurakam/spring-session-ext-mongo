@@ -1,6 +1,5 @@
 package org.tmurakam.spring.session.data.mongodb;
 
-import lombok.Getter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -45,19 +44,16 @@ public class MongoSession implements ExpiringSession {
     /**
      * Creation time (epoch in ms)
      */
-    @Getter
     private long creationTime;
 
     /**
      * Last accessed time (epoch in ms)
      */
-    @Getter
     private long lastAccessedTime;
 
     /**
      * Max inactive interval (sec)
      */
-    @Getter
     private int maxInactiveIntervalInSeconds;
 
     /**
@@ -89,9 +85,24 @@ public class MongoSession implements ExpiringSession {
     }
 
     @Override
+    public long getCreationTime() {
+        return creationTime;
+    }
+
+    @Override
+    public long getLastAccessedTime() {
+        return lastAccessedTime;
+    }
+
+    @Override
     public void setMaxInactiveIntervalInSeconds(int interval) {
         maxInactiveIntervalInSeconds = interval;
         updateExpireTime();
+    }
+
+    @Override
+    public int getMaxInactiveIntervalInSeconds() {
+        return maxInactiveIntervalInSeconds;
     }
 
     private void updateExpireTime() {

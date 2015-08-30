@@ -41,7 +41,6 @@ dependencies {
     compile 'org.springframework.data:spring-data-mongodb:1.7.2.RELEASE'
     compile 'org.mongodb:mongodb-driver:3.0.2'
 
-    provided "org.projectlombok:lombok:1.16.2"
     provided "javax.servlet:javax.servlet-api:3.0.1"
 
     testCompile 'junit:junit:4.11'
