@@ -1,0 +1,85 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+
+idea {
+    module {
+        scopes.PROVIDED.plus += [configurations.provided]
+    }
+}
+
+dependencies {
+    compile "org.springframework:spring-context:$springVersion"
+    compile "org.springframework:spring-web:$springVersion"
+
+    compile "org.springframework.session:spring-session:1.0.2.RELEASE"
+
+    compile('org.springframework.data:spring-data-mongodb:1.7.2.RELEASE') {
+        exclude group: 'org.mongodb', module: 'mongo-java-driver'
+    }
+    compile 'org.mongodb:mongodb-driver:3.0.3'
+
+    provided "javax.servlet:javax.servlet-api:3.0.1"
+
+    testCompile "org.springframework:spring-test:$springVersion"
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.hamcrest:hamcrest-all:1.3'
+
+}
+
+test {
+    exclude '**/*IT.class'
+}
+
+task integrationTest(type: Test) {
+    include '**/*IT.class'
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allJava
+}
+
+artifacts {
+    archives sourcesJar
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file://${buildDir}/repo")
+            pom.artifactId = "spring-data-mongodb"
+            pom.project {
+                licenses {
+                    license {
+                        name "BSD License"
+                        url "https://github.com/tmurakam/spring-session-mongodb/blob/master/LICENSE.txt"
+                        distribution 'repo'
+                    }
+                }
+            }
+        }
+    }
+}
+/*
+publishing {
+    publications {
+        maven(MavenPublication) {
+            artifactId 'spring-session-mongodb'
+
+            from components.java
+            artifact sourcesJar {
+                classifier = 'sources'
+                extension = 'jar'
+            }
+        }
+    }
+    repositories {
+        maven {
+            url "${buildDir}/repo"
+        }
+    }
+}
+*/
