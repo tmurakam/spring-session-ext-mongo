@@ -1,26 +1,25 @@
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.tmurakam.MongoSessionConfiguration;
+import org.tmurakam.MongoSessionRepository;
+
+import static org.junit.Assert.*;
 
 /**
- * Created by tmurakam on 15/08/29.
+ * Created by tmurakam on 15/08/30.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = MongoSessionConfiguration.class)
-@WebAppConfiguration
-public class MongoSessionConfigurationTest {
+public class MongoSessionRepositoryTest {
     @Autowired
-    ApplicationContext context;
+    MongoSessionRepository repository;
 
     @Test
-    public void init() {
-        context.getBean("springSessionRepositoryFilter");
+    public void test() {
+        assertNotNull(repository);
     }
 }
