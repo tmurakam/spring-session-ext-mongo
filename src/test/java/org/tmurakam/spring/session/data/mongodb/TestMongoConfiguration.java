@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 /**
  * Mongo Configuration
  */
-@Configuration
+@EnableMongoHttpSession
 public class TestMongoConfiguration {
     @Bean
     public MongoClientFactoryBean mongo() {
