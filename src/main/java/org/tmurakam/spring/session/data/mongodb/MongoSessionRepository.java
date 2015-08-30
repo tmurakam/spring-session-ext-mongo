@@ -1,4 +1,4 @@
-package org.tmurakam;
+package org.tmurakam.spring.session.data.mongodb;
 
 import org.springframework.session.SessionRepository;
 import org.springframework.stereotype.Service;
