@@ -63,6 +63,8 @@ task sourcesJar(type: Jar) {
 publishing {
     publications {
         maven(MavenPublication) {
+            artifactId 'spring-session-mongodb'
+
             from components.java
             artifact sourcesJar {
                 classifier = 'sources'
