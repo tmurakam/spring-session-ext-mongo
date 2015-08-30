@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import static org.junit.Assert.*;
 
@@ -13,8 +14,8 @@ import static org.junit.Assert.*;
  * Session repository test
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class,
-        classes = {TestMongoConfiguration.class})
+@ContextConfiguration(classes = TestMongoConfiguration.class)
+@WebAppConfiguration
 public class MongoSessionRepositoryIT {
     @Autowired
     MongoSessionRepository repository;

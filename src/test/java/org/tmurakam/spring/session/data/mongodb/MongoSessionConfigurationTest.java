@@ -7,7 +7,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.session.web.http.SessionRepositoryFilter;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import static org.junit.Assert.assertSame;
@@ -16,8 +15,7 @@ import static org.junit.Assert.assertSame;
  * MongoSession Configuration Test
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class,
-        classes = {TestMongoConfiguration.class})
+@ContextConfiguration(classes = TestMongoConfiguration.class)
 @WebAppConfiguration
 public class MongoSessionConfigurationTest {
     @Autowired
