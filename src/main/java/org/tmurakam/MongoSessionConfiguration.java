@@ -19,6 +19,7 @@ public class MongoSessionConfiguration implements ServletContextAware {
         this.servletContext = servletContext;
 
     }
+
     @Bean
     public SessionRepositoryFilter<MongoSession> springSessionRepositoryFilter(MongoSessionRepository repository) {
         SessionRepositoryFilter<MongoSession> filter = new SessionRepositoryFilter<>(repository);

@@ -10,7 +10,7 @@ import org.tmurakam.MongoSessionRepository;
 import static org.junit.Assert.*;
 
 /**
- * Created by tmurakam on 15/08/30.
+ * Session repository test
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = MongoSessionConfiguration.class)
