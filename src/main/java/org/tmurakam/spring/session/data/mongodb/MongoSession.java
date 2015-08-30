@@ -1,7 +1,6 @@
 package org.tmurakam.spring.session.data.mongodb;
 
 import lombok.Getter;
-import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -19,28 +18,57 @@ import java.util.UUID;
 public class MongoSession implements ExpiringSession {
     public static final int DEFAULT_MAX_INACTIVE_INTERVAL_SECONDS = 1800;
 
+    /**
+     * MongoDB Object ID
+     */
     @Id
     private String id;
 
+    /**
+     * Session ID
+     */
     @Indexed(unique = true)
     private String sessionId;
+    public static final String KEY_SESSION_ID = "sessionId";
 
+    /**
+     * Serialized session attributes
+     */
     private byte[] serializedAttributes;
 
+    /**
+     * Sesison attributes (not saved to MongoDB)
+     */
     @Transient
     private Map<String,Object> attributes;
 
+    /**
+     * Creation time (epoch in ms)
+     */
     @Getter
     private long creationTime;
 
+    /**
+     * Last accessed time (epoch in ms)
+     */
     @Getter
     private long lastAccessedTime;
 
+    /**
+     * Max inactive interval (sec)
+     */
     @Getter
     private int maxInactiveIntervalInSeconds;
 
+    /**
+     * Expire time (epoch in ms)
+     */
     private long expireTime;
+    public static final String KEY_EXPIRE_TIME = "expireTime";
 
+    /**
+     * Constructor
+     */
     public MongoSession() {
         sessionId = UUID.randomUUID().toString();
         attributes = new HashMap<>();
@@ -96,6 +124,9 @@ public class MongoSession implements ExpiringSession {
         attributes.remove(attributeName);
     }
 
+    /**
+     * Serialize session attributes
+     */
     public void serializeAttributes() {
         try (ByteArrayOutputStream bos = new ByteArrayOutputStream();
              ObjectOutputStream oos = new ObjectOutputStream(bos)) {
@@ -108,6 +139,9 @@ public class MongoSession implements ExpiringSession {
         }
     }
 
+    /**
+     * Deserialize session attirbutes
+     */
     public void deserializeAttributes() {
         try (ByteArrayInputStream bis = new ByteArrayInputStream(serializedAttributes);
              ObjectInputStream ois = new ObjectInputStream(bis))  {

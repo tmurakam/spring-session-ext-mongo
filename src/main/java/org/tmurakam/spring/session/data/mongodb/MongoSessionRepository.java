@@ -52,7 +52,7 @@ public class MongoSessionRepository implements SessionRepository<MongoSession> {
     }
 
     private Query createQueryById(String id) {
-        return new Query(Criteria.where("sessionId").is(id));
+        return new Query(Criteria.where(MongoSession.KEY_SESSION_ID).is(id));
     }
 
     /**
@@ -60,7 +60,7 @@ public class MongoSessionRepository implements SessionRepository<MongoSession> {
      */
     private void removeAllExpiredSessions() {
         long now = System.currentTimeMillis();
-        Criteria criteria = Criteria.where("expireTime").lte(now);
+        Criteria criteria = Criteria.where(MongoSession.KEY_EXPIRE_TIME).lte(now);
         mongoTemplate.remove(new Query(criteria), MongoSession.class);
     }
 }
