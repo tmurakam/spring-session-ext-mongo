@@ -74,7 +74,7 @@ public class MyMongoConfiguration {
 Next, create spring XML configuration file, and place it in resources/spring/ dir.
 
 ```xml
-<context:annotation-config>
+<context:annotation-config/>
 
 <!-- Your MongoDB configuration class -->
 <bean class="com.example.MyMongoConfiguration"/>
