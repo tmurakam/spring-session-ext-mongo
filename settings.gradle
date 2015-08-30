@@ -1,2 +1,5 @@
-rootProject.name = 'spring-session-mongodb'
+rootProject.name = 'spring-session-build'
+
+include 'spring-session-mongodb'
+
 
