@@ -4,8 +4,15 @@ dependencies {
     compile project(':spring-session-mongodb')
     compile "org.springframework:spring-web:$springVersion"
 
-    providedCompile "javax.servlet:javax.servlet-api:3.0.1"
+    //compile "javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.1"
+    //compile "org.apache.taglibs:taglibs-standard-jstlel:1.2.1"
 
-    compile "javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.1"
-    compile "org.apache.taglibs:taglibs-standard-jstlel:1.2.1"
+    compile "javax.servlet:jstl:1.2"
+    compile("org.glassfish.web:jstl-impl:1.2") {
+        exclude group: "javax.servlet", module: "servlet-api"
+        exclude group: "javax.servlet.jsp", module: "jsp-api"
+        exclude group: "javax.servlet.jsp.jstl", module: "jstl-api"
+    }
+
+    providedCompile "javax.servlet:javax.servlet-api:3.0.1"
 }
