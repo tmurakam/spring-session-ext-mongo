@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class,
         classes = {MongoSessionConfiguration.class, TestMongoConfiguration.class})
-public class MongoSessionRepositoryTest {
+public class MongoSessionRepositoryIT {
     @Autowired
     MongoSessionRepository repository;
 

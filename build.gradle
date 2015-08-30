@@ -35,7 +35,6 @@ repositories {
 dependencies {
     compile "org.springframework:spring-context:$springVersion"
     compile "org.springframework:spring-web:$springVersion"
-    compile "org.springframework:spring-test:$springVersion"
 
     compile "org.springframework.session:spring-session:1.0.2.RELEASE"
 
@@ -46,12 +45,29 @@ dependencies {
     provided "javax.servlet:javax.servlet-api:3.0.1"
 
     testCompile 'junit:junit:4.11'
+    testCompile "org.springframework:spring-test:$springVersion"
+}
+
+test {
+    exclude '**/*IT.class'
+}
+
+task integrationTest(type: Test) {
+    include '**/*IT.class'
+}
+
+task sourcesJar(type: Jar) {
+    from sourceSets.main.allJava
 }
 
 publishing {
     publications {
         maven(MavenPublication) {
-
+            from components.java
+            artifact sourcesJar {
+                classifier = 'sources'
+                extension = 'jar'
+            }
         }
     }
     repositories {
