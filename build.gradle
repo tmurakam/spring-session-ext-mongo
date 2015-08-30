@@ -4,6 +4,8 @@ version '1.0-SNAPSHOT'
 apply plugin: 'java'
 apply plugin: 'idea'
 
+apply plugin: 'maven-publish'
+
 sourceCompatibility = 1.8
 
 ext {
@@ -44,4 +46,17 @@ dependencies {
     provided "javax.servlet:javax.servlet-api:3.0.1"
 
     testCompile 'junit:junit:4.11'
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+
+        }
+    }
+    repositories {
+        maven {
+            url "${buildDir}/repo"
+        }
+    }
 }
