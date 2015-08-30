@@ -7,10 +7,44 @@ Usage
 You can choose from enabling HttpSession filter using either Java Based Configuration,
 or XML Based configuration.
 
+For more details for Spring Session configuration, refer Spring Session documentations. 
+
 Java Based Configuration
 ------------------------
 
-TBD.
+First, create Java configuration class for MongoDB.
+This must annotated with @EnableMongoSessionConfiguration.
+
+```java
+package com.example;
+
+@EnableMongoSessionConfiguration
+public class MyMongoConfiguration {
+    @Bean
+    public MongoClientFactoryBean mongo() {
+        MongoClientFactoryBean mongo = new MongoClientFactoryBean();
+        mongo.setHost("localhost");
+        return mongo;
+    }
+
+    @Bean
+    public MongoTemplate mongoTemplate(Mongo mongo) {
+        MongoTemplate template = new MongoTemplate(mongo, "mongoSession");
+        return template;
+    }
+}
+```
+
+Next, create Initializer class extends AbstractHttpSessionApplicationInitializer.
+
+```java
+public class Initializer extends AbstractHttpSessionApplicationInitialier {
+    public Initializer() {
+        super(MyMongoConfiguration.class);
+    }
+}
+```
+
 
 XML Based Configuration
 -----------------------
