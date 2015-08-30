@@ -36,7 +36,7 @@ public class MongoSession implements ExpiringSession {
     private byte[] serializedAttributes;
 
     /**
-     * Sesison attributes (not saved to MongoDB)
+     * Session attributes (not saved to MongoDB)
      */
     @Transient
     private Map<String,Object> attributes;
@@ -155,7 +155,7 @@ public class MongoSession implements ExpiringSession {
     }
 
     /**
-     * Deserialize session attirbutes
+     * Deserialize session attributes
      */
     public void deserializeAttributes() {
         try (ByteArrayInputStream bis = new ByteArrayInputStream(serializedAttributes);

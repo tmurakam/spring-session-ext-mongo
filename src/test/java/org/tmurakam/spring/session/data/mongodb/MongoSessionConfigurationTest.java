@@ -28,7 +28,7 @@ public class MongoSessionConfigurationTest {
 
     @Test
     public void getBeanByName() {
-        Object filer = context.getBean("springSessionRepositoryFilter");
+        Object filter = context.getBean("springSessionRepositoryFilter");
         assertSame(this.filter, filter);
     }
 

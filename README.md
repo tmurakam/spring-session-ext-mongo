@@ -38,7 +38,7 @@ public class MyMongoConfiguration {
 Next, create Initializer class extends AbstractHttpSessionApplicationInitializer.
 
 ```java
-public class Initializer extends AbstractHttpSessionApplicationInitialier {
+public class Initializer extends AbstractHttpSessionApplicationInitializer {
     public Initializer() {
         super(MyMongoConfiguration.class);
     }
