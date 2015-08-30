@@ -1,4 +1,19 @@
-apply plugin: 'java'
-
 group 'org.tmurakam'
 version '0.9.0-SNAPSHOT'
+
+ext {
+    springVersion = "4.2.0.RELEASE"
+}
+
+allprojects {
+    apply plugin: 'java'
+    sourceCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+}
