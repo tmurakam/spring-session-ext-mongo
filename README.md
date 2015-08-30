@@ -54,7 +54,7 @@ First, create Java configuration class for MongoDB.
 ```java
 package com.example;
 
-@Configuration
+@EnableMongoSessionConfiguration
 public class MyMongoConfiguration {
     @Bean
     public MongoClientFactoryBean mongo() {
@@ -78,9 +78,6 @@ Next, create spring XML configuration file, and place it in resources/spring/ di
 
 <!-- Your MongoDB configuration class -->
 <bean class="com.example.MyMongoConfiguration"/>
-
-<!-- Configuration class for springSessionRepositoryFilter --> 
-<bean class="org.tmurakam.spring.session.data.mongodb.MongoSessionConfiguration"/>
 ```
 
 Add spring configuration for WEB-INF/web.xml.
