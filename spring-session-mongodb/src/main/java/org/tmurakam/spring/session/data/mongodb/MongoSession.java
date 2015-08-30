@@ -25,6 +25,7 @@ package org.tmurakam.spring.session.data.mongodb;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.session.ExpiringSession;
 
 import java.io.*;
@@ -36,6 +37,7 @@ import java.util.UUID;
 /**
  * MongoSession for spring session
  */
+@Document(collection = "springMongoSession")
 public class MongoSession implements ExpiringSession {
     public static final int DEFAULT_MAX_INACTIVE_INTERVAL_SECONDS = 1800;
 
