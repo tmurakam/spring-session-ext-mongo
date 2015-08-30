@@ -2,12 +2,28 @@ group 'org.tmurakam'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
-apply plugin: 'war'
+apply plugin: 'idea'
 
 sourceCompatibility = 1.8
 
 ext {
     springVersion = "4.2.0.RELEASE"
+}
+
+configurations {
+    provided
+}
+
+sourceSets {
+    main.compileClasspath += configurations.provided
+    test.compileClasspath += configurations.provided
+    test.runtimeClasspath += configurations.provided
+}
+
+idea {
+    module {
+        scopes.PROVIDED.plus += [configurations.provided]
+    }
 }
 
 repositories {
@@ -24,8 +40,8 @@ dependencies {
     compile 'org.springframework.data:spring-data-mongodb:1.7.2.RELEASE'
     compile 'org.mongodb:mongodb-driver:3.0.2'
 
-    providedCompile "org.projectlombok:lombok:1.16.2"
-    providedCompile "javax.servlet:javax.servlet-api:3.0.1"
+    provided "org.projectlombok:lombok:1.16.2"
+    provided "javax.servlet:javax.servlet-api:3.0.1"
 
     testCompile 'junit:junit:4.11'
 }
