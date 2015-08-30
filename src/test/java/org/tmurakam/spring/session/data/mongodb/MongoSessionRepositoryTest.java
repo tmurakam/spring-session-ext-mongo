@@ -22,4 +22,14 @@ public class MongoSessionRepositoryTest {
     public void test() {
         assertNotNull(repository);
     }
+
+    @Test
+    public void testSaveRead() {
+        MongoSession session = repository.createSession();
+        session.setAttribute("key1", "value1");
+        repository.save(session);
+
+        MongoSession session2 = repository.getSession(session.getId());
+        assertEquals("value1", session2.getAttribute("key1"));
+    }
 }

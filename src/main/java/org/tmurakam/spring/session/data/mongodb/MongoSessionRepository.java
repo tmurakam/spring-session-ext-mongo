@@ -18,9 +18,6 @@ public class MongoSessionRepository implements SessionRepository<MongoSession> {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    // for testing purpose
-    private Map<String,MongoSession> fStore = new HashMap<>();
-
     @Override
     public MongoSession createSession() {
         MongoSession session = new MongoSession();
