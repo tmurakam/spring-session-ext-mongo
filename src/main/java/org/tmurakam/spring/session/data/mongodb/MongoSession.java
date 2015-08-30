@@ -105,6 +105,10 @@ public class MongoSession implements ExpiringSession {
         return maxInactiveIntervalInSeconds;
     }
 
+    protected long getExpireTime() {
+        return expireTime;
+    }
+
     private void updateExpireTime() {
         expireTime = lastAccessedTime + maxInactiveIntervalInSeconds * 1000;
     }
@@ -146,7 +150,7 @@ public class MongoSession implements ExpiringSession {
             serializedAttributes = bos.toByteArray();
         } catch (IOException e) {
             //e.printStackTrace();
-
+            serializedAttributes = new byte[0];
         }
     }
 
@@ -157,10 +161,9 @@ public class MongoSession implements ExpiringSession {
         try (ByteArrayInputStream bis = new ByteArrayInputStream(serializedAttributes);
              ObjectInputStream ois = new ObjectInputStream(bis))  {
             attributes = (Map<String,Object>)ois.readObject();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (IOException | ClassNotFoundException e) {
+            //e.printStackTrace();
+            attributes = new HashMap<>();
         }
     }
 }
