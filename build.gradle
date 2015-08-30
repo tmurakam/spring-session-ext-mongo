@@ -38,7 +38,7 @@ dependencies {
     compile "org.springframework.session:spring-session:1.0.2.RELEASE"
 
     compile 'org.springframework.data:spring-data-mongodb:1.7.2.RELEASE'
-    compile 'org.mongodb:mongodb-driver:3.0.2'
+    compile 'org.mongodb:mongodb-driver:3.0.3'
 
     provided "javax.servlet:javax.servlet-api:3.0.1"
 
