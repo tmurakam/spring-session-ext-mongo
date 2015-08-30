@@ -13,7 +13,8 @@ import static org.junit.Assert.*;
  * Session repository test
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = MongoSessionConfiguration.class)
+@ContextConfiguration(loader = AnnotationConfigContextLoader.class,
+        classes = {MongoSessionConfiguration.class, TestMongoConfiguration.class})
 public class MongoSessionRepositoryTest {
     @Autowired
     MongoSessionRepository repository;

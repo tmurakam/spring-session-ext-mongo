@@ -16,7 +16,8 @@ import static org.junit.Assert.assertSame;
  * Created by tmurakam on 15/08/29.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(loader = AnnotationConfigContextLoader.class, classes = MongoSessionConfiguration.class)
+@ContextConfiguration(loader = AnnotationConfigContextLoader.class,
+        classes = {MongoSessionConfiguration.class,TestMongoConfiguration.class})
 @WebAppConfiguration
 public class MongoSessionConfigurationTest {
     @Autowired
