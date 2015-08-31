@@ -1,5 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'maven'
+//apply plugin: 'signing'
 apply plugin: 'idea'
 
 sourceCompatibility = 1.8
@@ -42,6 +43,10 @@ task sourcesJar(type: Jar) {
     from sourceSets.main.allJava
 }
 
+//signing {
+//    sign configurations.archives
+//}
+
 artifacts {
     archives sourcesJar
 }
@@ -52,11 +57,26 @@ uploadArchives {
             repository(url: "file://${buildDir}/repo")
             pom.artifactId = "spring-data-mongodb"
             pom.project {
+                packaging "jar"
+                name "Spring Session MongoDB"
+                url "https://github.com/tmurakam/spring-session-mongodb"
+                description "Spring session with MongoDB backend"
                 licenses {
                     license {
                         name "BSD License"
                         url "https://github.com/tmurakam/spring-session-mongodb/blob/master/LICENSE.txt"
                         distribution 'repo'
+                    }
+                }
+                scm {
+                    url "https://github.com/tmurakam/spring-session-mongodb"
+                    connection "scm:git:https://github.com/tmurakam/spring-session-mongodb.git"
+                }
+                developers {
+                    developer {
+                        id "tmurakam"
+                        name "Takuya Murakami"
+                        email "tmurakam@tmurakam.org"
                     }
                 }
             }
@@ -83,3 +103,4 @@ publishing {
     }
 }
 */
+
