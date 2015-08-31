@@ -1,16 +1,30 @@
 Spring Session with MongoDB backend
 ===================================
 
-Usage
-=====
+Dependency
+----------
+
+Add dependency to build.gradle:
+
+```groovy
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'org.tmurakam:spring-session-mongodb:0.9.0'
+}
+```
+
+Configuration
+-------------
 
 You can choose from enabling HttpSession filter using either Java Based Configuration,
 or XML Based configuration.
 
 For more details for Spring Session configuration, refer Spring Session documentations. 
 
-Java Based Configuration
-------------------------
+### Java Based Configuration
 
 First, create Java configuration class for MongoDB.
 This must annotated with @EnableMongoSessionConfiguration.
@@ -46,8 +60,7 @@ public class Initializer extends AbstractHttpSessionApplicationInitializer {
 ```
 
 
-XML Based Configuration
------------------------
+### XML Based Configuration
 
 First, create Java configuration class for MongoDB.
 
