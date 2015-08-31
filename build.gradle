@@ -1,11 +1,11 @@
-group 'org.tmurakam'
-version '0.9.0-SNAPSHOT'
-
 ext {
     springVersion = "4.2.0.RELEASE"
 }
 
 allprojects {
+    group 'org.tmurakam'
+    version '0.9.0-SNAPSHOT'
+
     apply plugin: 'java'
     sourceCompatibility = 1.8
 
