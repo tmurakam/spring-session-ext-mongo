@@ -5,7 +5,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import static org.junit.Assert.*;
@@ -48,21 +47,30 @@ public class MongoSessionRepositoryIT {
     }
 
     @Test
-    public void testExpire() {
+    public void testFlush() {
         MongoSession session = repository.createSession();
         session.setLastAccessedTime(0);
         repository.save(session);
 
-        repository.removeAllExpiredSessions();
+        assertNotNull(repository._getSession(session.getId()));
+
+        repository.flushExpiredSessions();
 
         assertNull(repository._getSession(session.getId()));
     }
 
     @Test
-    public void testExpirePeriodically() {
-        for (int i = 0; i < 1000; i++) {
-            repository.createSession();
-        }
-        // TODO:
+    public void testFlushPeriodically() {
+        MongoSession session = repository.createSession();
+        session.setLastAccessedTime(0);
+        repository.save(session);
+
+        assertNotNull(repository._getSession(session.getId()));
+
+        // force flush
+        repository.lastFlushTime = System.currentTimeMillis() - MongoSessionRepository.FLUSH_INTERVAL_SECONDS * 1000;
+        repository.createSession();
+
+        assertNull(repository._getSession(session.getId()));
     }
 }

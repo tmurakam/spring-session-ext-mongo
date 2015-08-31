@@ -37,7 +37,9 @@ public class MongoSessionRepository implements SessionRepository<MongoSession> {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    private int expireCounter = 0;
+    /*package*/ long lastFlushTime = 0;
+
+    public static long FLUSH_INTERVAL_SECONDS = 600;
 
     /** {@inheritDoc} */
     @Override
@@ -46,10 +48,10 @@ public class MongoSessionRepository implements SessionRepository<MongoSession> {
         session.serializeAttributes();
         mongoTemplate.save(session);
 
-        expireCounter++;
-        if (expireCounter > 100){
-            expireCounter = 0;
-            removeAllExpiredSessions();
+        long now = System.currentTimeMillis();
+        if (lastFlushTime + FLUSH_INTERVAL_SECONDS * 1000 <= now) {
+            lastFlushTime = now;
+            flushExpiredSessions();
         }
 
         return session;
@@ -96,9 +98,9 @@ public class MongoSessionRepository implements SessionRepository<MongoSession> {
     }
 
     /**
-     * Remove all expired sessions
+     * Flush all expired sessions
      */
-    /*package*/ void removeAllExpiredSessions() {
+    /*package*/ void flushExpiredSessions() {
         long now = System.currentTimeMillis();
         Criteria criteria = Criteria.where(MongoSession.KEY_EXPIRE_TIME).lte(now);
         mongoTemplate.remove(new Query(criteria), MongoSession.class);
