@@ -1,7 +1,10 @@
 apply plugin: 'java'
 apply plugin: 'maven'
+apply plugin: 'maven-publish'
 //apply plugin: 'signing'
 apply plugin: 'idea'
+
+apply plugin: 'com.jfrog.bintray'
 
 sourceCompatibility = 1.8
 
@@ -51,6 +54,7 @@ artifacts {
     archives sourcesJar
 }
 
+/*
 uploadArchives {
     repositories {
         mavenDeployer {
@@ -83,6 +87,8 @@ uploadArchives {
         }
     }
 }
+*/
+
 /*
 publishing {
     publications {
@@ -103,4 +109,32 @@ publishing {
     }
 }
 */
+
+publishing {
+    publications {
+        BintrayPublication(MavenPublication) {
+            artifactId 'spring-session-mongodb'
+
+            from components.java
+            artifact sourcesJar {
+                classifier = 'sources'
+                extension = 'jar'
+            }
+        }
+    }
+}
+
+bintray {
+    user = bintrayUser
+    key = bintrayKey
+    publications = ["BintrayPublication"]
+    publish = true
+    pkg {
+        repo = 'maven'
+        name = 'spring-session-mongodb'
+        //userOrg = 'bintray_user'
+        //licenses = ['BSD']
+        //vcsUrl = 'https://github.com/tmurakam/spring-session-mongodb.git'
+    }
+}
 
