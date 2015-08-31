@@ -46,21 +46,33 @@ task sourcesJar(type: Jar) {
     from sourceSets.main.allJava
 }
 
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier 'javadoc'
+    from javadoc.destinationDir
+}
+
+jar.dependsOn sourcesJar, javadocJar
+
 //signing {
 //    sign configurations.archives
 //}
 
 artifacts {
     archives sourcesJar
+    archives javadocJar
 }
 
-/*
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: "file://${buildDir}/repo")
-            pom.artifactId = "spring-data-mongodb"
-            pom.project {
+publishing {
+    publications {
+        mod1(MavenPublication) {
+            artifactId 'spring-session-mongodb'
+
+            from components.java
+            artifact sourcesJar
+            artifact javadocJar
+
+            // for maven central POM
+            final customPom = {
                 packaging "jar"
                 name "Spring Session MongoDB"
                 url "https://github.com/tmurakam/spring-session-mongodb"
@@ -84,41 +96,11 @@ uploadArchives {
                     }
                 }
             }
-        }
-    }
-}
-*/
+            customPom.resolveStrategy = Closure.DELEGATE_FIRST
 
-/*
-publishing {
-    publications {
-        maven(MavenPublication) {
-            artifactId 'spring-session-mongodb'
-
-            from components.java
-            artifact sourcesJar {
-                classifier = 'sources'
-                extension = 'jar'
-            }
-        }
-    }
-    repositories {
-        maven {
-            url "${buildDir}/repo"
-        }
-    }
-}
-*/
-
-publishing {
-    publications {
-        BintrayPublication(MavenPublication) {
-            artifactId 'spring-session-mongodb'
-
-            from components.java
-            artifact sourcesJar {
-                classifier = 'sources'
-                extension = 'jar'
+            pom.withXml { xml ->
+                final root = xml.asNode()
+                root.children().last() + customPom
             }
         }
     }
@@ -127,7 +109,7 @@ publishing {
 bintray {
     user = bintrayUser
     key = bintrayKey
-    publications = ["BintrayPublication"]
+    publications = ["mod1"]
     publish = true
     pkg {
         repo = 'maven'
