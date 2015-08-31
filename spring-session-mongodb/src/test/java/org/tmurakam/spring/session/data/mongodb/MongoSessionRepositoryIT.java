@@ -37,4 +37,32 @@ public class MongoSessionRepositoryIT {
         repository.delete(session.getId());
         assertNull(repository.getSession(session.getId()));
     }
+
+    @Test
+    public void testGetSessionExpired() {
+        MongoSession session = repository.createSession();
+        session.setLastAccessedTime(0);
+        repository.save(session);
+
+        assertNull(repository.getSession(session.getId()));
+    }
+
+    @Test
+    public void testExpire() {
+        MongoSession session = repository.createSession();
+        session.setLastAccessedTime(0);
+        repository.save(session);
+
+        repository.removeAllExpiredSessions();
+
+        assertNull(repository._getSession(session.getId()));
+    }
+
+    @Test
+    public void testExpirePeriodically() {
+        for (int i = 0; i < 1000; i++) {
+            repository.createSession();
+        }
+        // TODO:
+    }
 }

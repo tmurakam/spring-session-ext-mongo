@@ -58,15 +58,23 @@ public class MongoSessionRepository implements SessionRepository<MongoSession> {
     /** {@inheritDoc} */
     @Override
     public MongoSession getSession(String id) {
-        MongoSession session = mongoTemplate.findOne(createQueryById(id), MongoSession.class);
+        MongoSession session = _getSession(id);
         if (session == null) return null;
 
-        session.deserializeAttributes();
         if (session.isExpired()) {
             delete(session.getId());
             return null;
         }
+
         session.setLastAccessedTime(System.currentTimeMillis());
+        return session;
+    }
+
+    /*package*/ MongoSession _getSession(String id) {
+        MongoSession session = mongoTemplate.findOne(createQueryById(id), MongoSession.class);
+        if (session == null) return null;
+
+        session.deserializeAttributes();
         return session;
     }
 
@@ -90,7 +98,7 @@ public class MongoSessionRepository implements SessionRepository<MongoSession> {
     /**
      * Remove all expired sessions
      */
-    private void removeAllExpiredSessions() {
+    /*package*/ void removeAllExpiredSessions() {
         long now = System.currentTimeMillis();
         Criteria criteria = Criteria.where(MongoSession.KEY_EXPIRE_TIME).lte(now);
         mongoTemplate.remove(new Query(criteria), MongoSession.class);
