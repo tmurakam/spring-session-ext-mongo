@@ -6,7 +6,7 @@ apply plugin: 'idea'
 
 apply plugin: 'com.jfrog.bintray'
 
-sourceCompatibility = 1.8
+sourceCompatibility = 1.7
 
 idea {
     module {
