@@ -80,7 +80,7 @@ public class MongoSessionRepository implements SessionRepository<MongoSession> {
     /** {@inheritDoc} */
     @Override
     public void delete(String id) {
-        mongoTemplate.remove(createQueryById(id));
+        mongoTemplate.remove(createQueryById(id), MongoSession.class);
     }
 
     private Query createQueryById(String id) {
