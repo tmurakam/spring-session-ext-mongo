@@ -39,6 +39,7 @@ public class MongoSessionRepository implements SessionRepository<MongoSession> {
 
     private int expireCounter = 0;
 
+    /** {@inheritDoc} */
     @Override
     public MongoSession createSession() {
         MongoSession session = new MongoSession();
@@ -54,6 +55,7 @@ public class MongoSessionRepository implements SessionRepository<MongoSession> {
         return session;
     }
 
+    /** {@inheritDoc} */
     @Override
     public MongoSession getSession(String id) {
         MongoSession session = mongoTemplate.findOne(createQueryById(id), MongoSession.class);
@@ -68,15 +70,17 @@ public class MongoSessionRepository implements SessionRepository<MongoSession> {
         return session;
     }
 
+    /** {@inheritDoc} */
     @Override
     public void save(MongoSession session) {
         session.serializeAttributes();
         mongoTemplate.save(session);
     }
 
+    /** {@inheritDoc} */
     @Override
     public void delete(String id) {
-        mongoTemplate.remove(createQueryById(id));
+        mongoTemplate.remove(createQueryById(id), MongoSession.class);
     }
 
     private Query createQueryById(String id) {

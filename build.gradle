@@ -9,8 +9,8 @@ ext {
 
 allprojects {
     group 'org.tmurakam'
-    //version '0.9.0-SNAPSHOT'
-    version '0.9.0'
+    version '0.9.1'
+    //version '0.9.1-SNAPSHOT'
 
     apply plugin: 'java'
     sourceCompatibility = 1.8
@@ -32,4 +32,8 @@ allprojects {
         test.compileClasspath += configurations.provided
         test.runtimeClasspath += configurations.provided
     }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.6'
 }
