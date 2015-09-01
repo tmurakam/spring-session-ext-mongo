@@ -83,6 +83,7 @@ public class MongoSession implements ExpiringSession {
     /**
      * Expire time (epoch in ms)
      */
+    @Indexed
     private long expireTime;
     public static final String KEY_EXPIRE_TIME = "expireTime";
 
