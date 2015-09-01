@@ -1,8 +1,10 @@
 Usage
 =====
 
-Dependency
-----------
+Sample web application is located at samples/httpsession-xml.
+
+Add Dependency
+--------------
 
 Add dependency to build.gradle:
 
@@ -12,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    compile 'org.tmurakam:spring-session-mongodb:0.9.1'
+    compile 'org.tmurakam:spring-session-mongodb:0.9.2'
 }
 ```
 
@@ -62,27 +64,7 @@ public class Initializer extends AbstractHttpSessionApplicationInitializer {
 
 ### XML Based Configuration
 
-First, create Java configuration class for MongoDB.
-
-```java
-package com.example;
-
-@EnableMongoSessionConfiguration
-public class MyMongoConfiguration {
-    @Bean
-    public MongoClientFactoryBean mongo() {
-        MongoClientFactoryBean mongo = new MongoClientFactoryBean();
-        mongo.setHost("localhost");
-        return mongo;
-    }
-
-    @Bean
-    public MongoTemplate mongoTemplate(Mongo mongo) {
-        MongoTemplate template = new MongoTemplate(mongo, "mongoSession");
-        return template;
-    }
-}
-```
+First, create Java configuration class for MongoDB, as with Java Based Configuration.
 
 Next, create spring XML configuration file, and place it in resources/spring/ dir.
 
