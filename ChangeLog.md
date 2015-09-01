@@ -1,5 +1,11 @@
 # Change Log
 
+## 0.9.3 (2015-09-xx)
+
+### Enhancement
+
+- Add index to MongoSession.expireTime.
+
 ## 0.9.2 (2015-09-01)
 
 ### Enhancement
