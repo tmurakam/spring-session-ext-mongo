@@ -2,6 +2,10 @@
 
 ## 0.9.3 (2015-09-xx)
 
+### Bug fix
+
+- Does not accept not serializable attribute.
+
 ### Enhancement
 
 - Add index to MongoSession.expireTime.

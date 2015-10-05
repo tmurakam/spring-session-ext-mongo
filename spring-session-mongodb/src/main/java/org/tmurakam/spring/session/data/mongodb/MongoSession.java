@@ -156,6 +156,9 @@ public class MongoSession implements ExpiringSession {
 
     @Override
     public void setAttribute(String attributeName, Object attributeValue) {
+        if (!(attributeValue instanceof Serializable)) {
+            throw new IllegalArgumentException("Not serializable: " + attributeName);
+        }
         attributes.put(attributeName, attributeValue);
     }
 
