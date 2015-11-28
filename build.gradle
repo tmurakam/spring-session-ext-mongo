@@ -10,7 +10,7 @@ plugins {
 }
 
 ext {
-    springVersion = "4.2.1.RELEASE"
+    springVersion = "4.2.3.RELEASE"
 }
 
 allprojects {
