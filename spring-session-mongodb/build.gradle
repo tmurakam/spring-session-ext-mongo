@@ -20,10 +20,10 @@ dependencies {
 
     compile "org.springframework.session:spring-session:1.0.2.RELEASE"
 
-    compile('org.springframework.data:spring-data-mongodb:1.8.1.RELEASE') {
+    compile('org.springframework.data:spring-data-mongodb:1.8.2.RELEASE') {
         exclude module: 'mongo-java-driver'
     }
-    compile 'org.mongodb:mongodb-driver:3.1.1'
+    compile 'org.mongodb:mongodb-driver:3.2.1'
 
     provided "javax.servlet:javax.servlet-api:3.0.1"
 
