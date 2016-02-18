@@ -1,6 +1,6 @@
 # Change Log
 
-## 0.9.3 (2015-09-xx)
+## 0.9.3 (2016-02-18)
 
 ### Bug fix
 
@@ -9,6 +9,7 @@
 ### Enhancement
 
 - Add index to MongoSession.expireTime.
+- Update dependencies
 
 ## 0.9.2 (2015-09-01)
 
