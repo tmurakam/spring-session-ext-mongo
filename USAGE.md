@@ -29,12 +29,11 @@ For more details for Spring Session configuration, refer Spring Session document
 ### Java Based Configuration
 
 First, create Java configuration class for MongoDB.
-This must annotated with @EnableMongoSessionConfiguration.
-
+This must annotated with @EnableMongoHttpSession.
 ```java
 package com.example;
 
-@EnableMongoSessionConfiguration
+@EnableMongoHttpSession
 public class MyMongoConfiguration {
     @Bean
     public MongoClientFactoryBean mongo() {
