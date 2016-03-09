@@ -33,12 +33,12 @@ Javaベースまたは XML ベースの設定のいずれかが必要です。
 ### Java ベースのコンフィグレーション
 
 MongoDB に接続するための設定用 Java クラスを作成してください。
-@EnableMongoSessionConfiguration を必ず指定する必要があります。
+@EnableMongoHttpSession を必ず指定する必要があります。
 
 ```java
 package com.example;
 
-@EnableMongoSessionConfiguration
+@EnableMongoHttpSession
 public class MyMongoConfiguration {
     @Bean
     public MongoClientFactoryBean mongo() {
