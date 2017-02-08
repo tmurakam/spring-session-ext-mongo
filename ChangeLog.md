@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.0 (2017-02-XX)
+
+### Enhancement
+
+- Update dependencies: spring, spring-session, spring-data-mongodb, mongodb-driver, 
+
 ## 0.9.3 (2016-02-18)
 
 ### Bug fix
