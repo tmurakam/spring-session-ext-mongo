@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    compile 'org.tmurakam:spring-session-mongodb:0.9.3'
+    compile 'org.tmurakam:spring-session-mongodb:1.0.0'
 }
 ```
 
