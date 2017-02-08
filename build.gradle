@@ -6,7 +6,7 @@ buildscript {
 
 plugins {
     // bintray
-    id "com.jfrog.bintray" version "1.6"
+    id "com.jfrog.bintray" version "1.7.3"
 }
 
 ext {
@@ -41,5 +41,5 @@ allprojects {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.10'
+    gradleVersion = '3.3'
 }
