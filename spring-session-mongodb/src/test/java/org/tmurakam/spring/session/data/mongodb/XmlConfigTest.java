@@ -8,7 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * XML Configuration test
@@ -25,7 +25,7 @@ public class XmlConfigTest {
 
     @Test
     public void test() {
-        assertNotNull(repository);
-        assertNotNull(filter);
+        assertThat(repository).isNotNull();
+        assertThat(filter).isNotNull();
     }
 }

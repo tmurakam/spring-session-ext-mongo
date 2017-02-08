@@ -7,7 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * Session repository test
@@ -21,7 +21,7 @@ public class MongoSessionRepositoryIT {
 
     @Test
     public void test() {
-        assertNotNull(repository);
+        assertThat(repository).isNotNull();
     }
 
     @Test
@@ -31,10 +31,10 @@ public class MongoSessionRepositoryIT {
         repository.save(session);
 
         MongoSession session2 = repository.getSession(session.getId());
-        assertEquals("value1", session2.getAttribute("key1"));
+        assertThat(session2.getAttribute("key1")).isEqualTo("value1");
 
         repository.delete(session.getId());
-        assertNull(repository.getSession(session.getId()));
+        assertThat(repository.getSession(session.getId())).isNull();
     }
 
     @Test
@@ -43,7 +43,7 @@ public class MongoSessionRepositoryIT {
         session.setLastAccessedTime(0);
         repository.save(session);
 
-        assertNull(repository.getSession(session.getId()));
+        assertThat(repository.getSession(session.getId())).isNull();
     }
 
     @Test
@@ -52,11 +52,11 @@ public class MongoSessionRepositoryIT {
         session.setLastAccessedTime(0);
         repository.save(session);
 
-        assertNotNull(repository._getSession(session.getId()));
+        assertThat(repository._getSession(session.getId())).isNotNull();
 
         repository.flushExpiredSessions();
 
-        assertNull(repository._getSession(session.getId()));
+        assertThat(repository._getSession(session.getId())).isNull();
     }
 
     @Test
@@ -65,12 +65,12 @@ public class MongoSessionRepositoryIT {
         session.setLastAccessedTime(0);
         repository.save(session);
 
-        assertNotNull(repository._getSession(session.getId()));
+        assertThat(repository._getSession(session.getId())).isNotNull();
 
         // force flush
         repository.lastFlushTime = System.currentTimeMillis() - MongoSessionRepository.FLUSH_INTERVAL_SECONDS * 1000;
         repository.createSession();
 
-        assertNull(repository._getSession(session.getId()));
+        assertThat(repository._getSession(session.getId())).isNull();
     }
 }

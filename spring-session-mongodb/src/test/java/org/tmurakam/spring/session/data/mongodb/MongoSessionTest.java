@@ -3,9 +3,7 @@ package org.tmurakam.spring.session.data.mongodb;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.hamcrest.core.Is.is;
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * MongoSession test
@@ -28,35 +26,33 @@ public class MongoSessionTest {
         session.removeAttribute("key1");
         session.removeAttribute("key2");
 
-        assertNull(session.getAttribute("key1"));
-        assertNull(session.getAttribute("key2"));
-        assertEquals(0, session.getAttributeNames().size());
+        assertThat(session.getAttribute("key1")).isNull();
+        assertThat(session.getAttribute("key2")).isNull();
+        assertThat(session.getAttributeNames()).isEmpty();
 
         session.deserializeAttributes();
 
-        assertEquals(2, session.getAttributeNames().size());
-        assertEquals(12345, (int)session.getAttribute("key1"));
-        assertEquals("string", session.getAttribute("key2"));
+        assertThat(session.getAttributeNames()).hasSize(2);
+        assertThat((int)session.getAttribute("key1")).isEqualTo(12345);
+        assertThat(session.getAttribute("key2")).isEqualTo("string");
     }
 
     @Test
     public void testSessionId() {
         MongoSession session2 = new MongoSession();
-        assertNotEquals(session.getId(), session2.getId());
+        assertThat(session.getId()).isNotEqualTo(session2.getId());
     }
 
     @Test
     public void testGetCreationTime() {
         long now = System.currentTimeMillis();
-        assertThat(session.getCreationTime(), is(lessThanOrEqualTo(now)));
-        assertThat(session.getCreationTime(), is(greaterThan(now - 10000)));
+        assertThat(session.getCreationTime()).isLessThanOrEqualTo(now).isGreaterThan(now - 10000);
     }
 
     @Test
     public void testGetLastAccessedTime() {
         long now = System.currentTimeMillis();
-        assertThat(session.getLastAccessedTime(), is(lessThanOrEqualTo(now)));
-        assertThat(session.getLastAccessedTime(), is(greaterThan(now - 10000)));
+        assertThat(session.getLastAccessedTime()).isLessThanOrEqualTo(now).isGreaterThan(now - 10000);
     }
 
     @Test
@@ -64,26 +60,26 @@ public class MongoSessionTest {
         session.setLastAccessedTime(1000);
         session.setMaxInactiveIntervalInSeconds(0);
 
-        assertEquals(0, session.getMaxInactiveIntervalInSeconds());
-        assertEquals(1000, session.getExpireTime());
+        assertThat(session.getMaxInactiveIntervalInSeconds()).isEqualTo(0);
+        assertThat(session.getExpireTime()).isEqualTo(1000);
 
         session.setMaxInactiveIntervalInSeconds(1);
-        assertEquals(1, session.getMaxInactiveIntervalInSeconds());
-        assertEquals(2000, session.getExpireTime());
+        assertThat(session.getMaxInactiveIntervalInSeconds()).isEqualTo(1);
+        assertThat(session.getExpireTime()).isEqualTo(2000);
     }
 
     @Test
     public void testExpireTime() {
         session.setLastAccessedTime(0);
-        assertEquals(session.getMaxInactiveIntervalInSeconds() * 1000, session.getExpireTime());
+        assertThat(session.getExpireTime()).isEqualTo(session.getMaxInactiveIntervalInSeconds() * 1000);
     }
 
     @Test
     public void testIsExpired() {
         session.setLastAccessedTime(0);
-        assertTrue(session.isExpired());
+        assertThat(session.isExpired()).isTrue();
 
         session.setLastAccessedTime(System.currentTimeMillis());
-        assertFalse(session.isExpired());
+        assertThat(session.isExpired()).isFalse();
     }
 }

@@ -9,7 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import static org.junit.Assert.assertSame;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * MongoSession Configuration Test
@@ -27,7 +27,7 @@ public class MongoSessionConfigurationTest {
     @Test
     public void getBeanByName() {
         Object filter = context.getBean("springSessionRepositoryFilter");
-        assertSame(this.filter, filter);
+        assertThat(this.filter).isSameAs(filter);
     }
 
     @Test
