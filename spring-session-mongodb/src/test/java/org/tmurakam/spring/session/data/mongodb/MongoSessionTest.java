@@ -26,15 +26,15 @@ public class MongoSessionTest {
         session.removeAttribute("key1");
         session.removeAttribute("key2");
 
-        assertThat(session.getAttribute("key1")).isNull();
-        assertThat(session.getAttribute("key2")).isNull();
+        assertThat((String)session.getAttribute("key1")).isNull();
+        assertThat((String)session.getAttribute("key2")).isNull();
         assertThat(session.getAttributeNames()).isEmpty();
 
         session.deserializeAttributes();
 
         assertThat(session.getAttributeNames()).hasSize(2);
         assertThat((int)session.getAttribute("key1")).isEqualTo(12345);
-        assertThat(session.getAttribute("key2")).isEqualTo("string");
+        assertThat((String)session.getAttribute("key2")).isEqualTo("string");
     }
 
     @Test

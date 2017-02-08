@@ -31,7 +31,7 @@ public class MongoSessionRepositoryIT {
         repository.save(session);
 
         MongoSession session2 = repository.getSession(session.getId());
-        assertThat(session2.getAttribute("key1")).isEqualTo("value1");
+        assertThat((String)session2.getAttribute("key1")).isEqualTo("value1");
 
         repository.delete(session.getId());
         assertThat(repository.getSession(session.getId())).isNull();
