@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015, Takuya Murakami.
+ * Copyright (c) 2015-2017, Takuya Murakami.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
