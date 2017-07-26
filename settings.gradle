@@ -1,6 +1,3 @@
-rootProject.name = 'spring-session-build'
+rootProject.name = 'main'
 
-include 'spring-session-mongodb'
 include 'samples:httpsession-xml'
-
-

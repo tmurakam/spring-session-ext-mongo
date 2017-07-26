@@ -1,7 +1,8 @@
 apply plugin: 'war'
 
 dependencies {
-    compile project(':spring-session-mongodb')
+    compile rootProject
+    
     compile "org.springframework:spring-web:$springVersion"
 
     //compile "javax.servlet.jsp.jstl:javax.servlet.jsp.jstl-api:1.2.1"

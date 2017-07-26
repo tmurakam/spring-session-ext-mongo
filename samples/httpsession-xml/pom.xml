@@ -3,22 +3,58 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.tmurakam</groupId>
-        <artifactId>spring-session-ext-mongo-parent</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
-        <relativePath>../../</relativePath>
-    </parent>
-    
+
+    <groupId>org.tmurakam</groupId>
     <artifactId>spring-session-ext-mongo-sample-xml</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>XML config sample</name>
 
+    <properties>
+        <spring.version>4.3.10.RELEASE</spring.version>
+        <spring-session.version>1.3.1.RELEASE</spring-session.version>
+        <spring-data.version>1.10.5.RELEASE</spring-data.version>
+        <mongo-driver.version>3.4.2</mongo-driver.version>
+    </properties>
+    
     <dependencies>
         <dependency>
             <groupId>org.tmurakam</groupId>
             <artifactId>spring-session-ext-mongo</artifactId>
             <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session</artifactId>
+            <version>${spring-session.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb</artifactId>
+            <version>${spring-data.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver</artifactId>
+            <version>${mongo-driver.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>
