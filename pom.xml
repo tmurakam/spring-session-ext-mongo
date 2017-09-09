@@ -8,8 +8,26 @@
     <artifactId>spring-session-ext-mongo</artifactId>
     <version>1.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
+    
     <name>spring-session-ext-mongo</name>
+    <description>Spring Session with MongoDB backend</description>
     <url>https://github.com/tmurakam/spring-session-ext-mongo</url>
+
+    <licenses>
+        <license>
+            <name>BSD</name>
+            <url>https://opensource.org/licenses/BSD-2-Clause</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Takuya Murakami</name>
+            <email>tmurakam@tmurakam.org</email>
+            <organization>Takuya Murakami</organization>
+            <organizationUrl>https://github.com/tmurakam/</organizationUrl>
+        </developer>
+    </developers>
 
     <scm>
         <url>https://github.com/tmurakam/spring-session-ext-mongo</url>
@@ -25,6 +43,14 @@
         <junit.version>4.12</junit.version>
         <assertj-core.version>3.8.0</assertj-core.version>
     </properties>
+
+    <!-- deploy to bintray/jcenter -->
+    <distributionManagement>
+        <repository>
+            <id>bintray-tmurakam-maven</id>
+            <url>https://api.bintray.com/maven/tmurakam/maven/spring-session-ext-mongo/;publish=1</url>
+        </repository>
+    </distributionManagement>
 
     <dependencies>
         <dependency>
