@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.0.1 (2017-XX-XX)
+
+### Enhancement
+
+- Change artifact name: spring-session-mongodb -> spring-session-ext-mongo
+- Update dependencies: spring-data-*, mongodb-driver
+
 ## 1.0.0 (2017-02-09)
 
 ### Enhancement
