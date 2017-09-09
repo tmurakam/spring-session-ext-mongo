@@ -1,6 +1,6 @@
 # Change Log
 
-## 1.0.1 (2017-XX-XX)
+## 1.0.1 (2017-09-09)
 
 ### Enhancement
 
