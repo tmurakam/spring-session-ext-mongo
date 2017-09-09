@@ -1,3 +1,0 @@
-rootProject.name = 'spring-session-ext-mongo'
-
-include 'samples:httpsession-xml'
