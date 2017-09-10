@@ -8,5 +8,7 @@
 build/
 target/
 
-settings.xml
+bintray.config
+
+
 
