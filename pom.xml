@@ -6,7 +6,7 @@
     
     <groupId>org.tmurakam</groupId>
     <artifactId>spring-session-ext-mongo</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <packaging>jar</packaging>
     
     <name>spring-session-ext-mongo</name>
@@ -103,6 +103,7 @@
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>${assertj-core.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
