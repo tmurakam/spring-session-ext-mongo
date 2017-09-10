@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
+# call bintray GPG sign REST API
 
 . ./bintray.config
 
-# REST API
 USER=tmurakam
 NAME=spring-session-ext-mongo
 VERSION=1.0.1
