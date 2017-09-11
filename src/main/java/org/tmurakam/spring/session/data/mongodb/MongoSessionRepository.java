@@ -29,6 +29,8 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.session.SessionRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+
 /**
  * MongoSession Repository
  */
@@ -37,7 +39,7 @@ public class MongoSessionRepository implements SessionRepository<MongoSession> {
     @Autowired
     private MongoTemplate mongoTemplate;
 
-    /*package*/ long lastFlushTime = 0;
+    /*package*/ Instant lastFlushTime = Instant.EPOCH;
 
     public static long FLUSH_INTERVAL_SECONDS = 600;
 
@@ -48,8 +50,8 @@ public class MongoSessionRepository implements SessionRepository<MongoSession> {
         session.serializeAttributes();
         mongoTemplate.save(session);
 
-        long now = System.currentTimeMillis();
-        if (lastFlushTime + FLUSH_INTERVAL_SECONDS * 1000 <= now) {
+        Instant now = Instant.now();
+        if (lastFlushTime.plusSeconds(FLUSH_INTERVAL_SECONDS).isBefore(now)) {
             lastFlushTime = now;
             flushExpiredSessions();
         }
@@ -59,16 +61,16 @@ public class MongoSessionRepository implements SessionRepository<MongoSession> {
 
     /** {@inheritDoc} */
     @Override
-    public MongoSession getSession(String id) {
+    public MongoSession findById(String id) {
         MongoSession session = _getSession(id);
         if (session == null) return null;
 
         if (session.isExpired()) {
-            delete(session.getId());
+            deleteById(session.getId());
             return null;
         }
 
-        session.setLastAccessedTime(System.currentTimeMillis());
+        session.setLastAccessedTime(Instant.now());
         return session;
     }
 
@@ -89,7 +91,7 @@ public class MongoSessionRepository implements SessionRepository<MongoSession> {
 
     /** {@inheritDoc} */
     @Override
-    public void delete(String id) {
+    public void deleteById(String id) {
         mongoTemplate.remove(createQueryById(id), MongoSession.class);
     }
 

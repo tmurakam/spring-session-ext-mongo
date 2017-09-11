@@ -26,9 +26,11 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.session.ExpiringSession;
+import org.springframework.session.Session;
 
 import java.io.*;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -38,8 +40,8 @@ import java.util.UUID;
  * MongoSession for spring session
  */
 @Document(collection = "springMongoSession")
-public class MongoSession implements ExpiringSession {
-    public static final int DEFAULT_MAX_INACTIVE_INTERVAL_SECONDS = 1800;
+public class MongoSession implements Session {
+    public static final Duration DEFAULT_MAX_INACTIVE_INTERVAL = Duration.ofMinutes(30);
 
     /**
      * MongoDB Object ID
@@ -66,37 +68,41 @@ public class MongoSession implements ExpiringSession {
     private Map<String,Object> attributes;
 
     /**
-     * Creation time (epoch in ms)
+     * Creation time
      */
-    private long creationTime;
+    private Instant creationTime;
 
     /**
-     * Last accessed time (epoch in ms)
+     * Last accessed time
      */
-    private long lastAccessedTime;
+    private Instant lastAccessedTime;
 
     /**
      * Max inactive interval (sec)
      */
-    private int maxInactiveIntervalInSeconds;
+    private Duration maxInactiveInterval;
 
     /**
      * Expire time (epoch in ms)
      */
     @Indexed
-    private long expireTime;
+    private Instant expireTime;
     public static final String KEY_EXPIRE_TIME = "expireTime";
 
     /**
      * Constructor
      */
     public MongoSession() {
-        sessionId = UUID.randomUUID().toString();
+        sessionId = generateId();
         attributes = new HashMap<>();
-        creationTime = System.currentTimeMillis();
+        creationTime = Instant.now();
         lastAccessedTime = creationTime;
-        maxInactiveIntervalInSeconds = DEFAULT_MAX_INACTIVE_INTERVAL_SECONDS;
+        maxInactiveInterval = DEFAULT_MAX_INACTIVE_INTERVAL;
         updateExpireTime();
+    }
+
+    private String generateId() {
+        return UUID.randomUUID().toString();
     }
 
     @Override
@@ -104,44 +110,51 @@ public class MongoSession implements ExpiringSession {
         return sessionId;
     }
 
-    public void setLastAccessedTime(long lastAccessedTime) {
+    @Override
+    public String changeSessionId() {
+        sessionId = generateId();
+        return sessionId;
+    }
+
+    @Override
+    public void setLastAccessedTime(Instant lastAccessedTime) {
         this.lastAccessedTime = lastAccessedTime;
         updateExpireTime();
     }
 
     @Override
-    public long getCreationTime() {
+    public Instant getCreationTime() {
         return creationTime;
     }
 
     @Override
-    public long getLastAccessedTime() {
+    public Instant getLastAccessedTime() {
         return lastAccessedTime;
     }
 
     @Override
-    public void setMaxInactiveIntervalInSeconds(int interval) {
-        maxInactiveIntervalInSeconds = interval;
+    public void setMaxInactiveInterval(Duration interval) {
+        maxInactiveInterval = interval;
         updateExpireTime();
     }
 
     @Override
-    public int getMaxInactiveIntervalInSeconds() {
-        return maxInactiveIntervalInSeconds;
+    public Duration getMaxInactiveInterval() {
+        return maxInactiveInterval;
     }
 
-    protected long getExpireTime() {
+    protected Instant getExpireTime() {
         return expireTime;
     }
 
     private void updateExpireTime() {
-        expireTime = lastAccessedTime + maxInactiveIntervalInSeconds * 1000;
+        expireTime = lastAccessedTime.plusMillis(maxInactiveInterval.toMillis());
     }
 
     @Override
     public boolean isExpired() {
-        long now = System.currentTimeMillis();
-        return expireTime <= now;
+        Instant now = Instant.now();
+        return expireTime.isBefore(now);
     }
 
     @Override

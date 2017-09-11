@@ -7,6 +7,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
+import java.time.Instant;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -30,26 +32,26 @@ public class MongoSessionRepositoryIT {
         session.setAttribute("key1", "value1");
         repository.save(session);
 
-        MongoSession session2 = repository.getSession(session.getId());
+        MongoSession session2 = repository.findById(session.getId());
         assertThat((String)session2.getAttribute("key1")).isEqualTo("value1");
 
-        repository.delete(session.getId());
-        assertThat(repository.getSession(session.getId())).isNull();
+        repository.deleteById(session.getId());
+        assertThat(repository.findById(session.getId())).isNull();
     }
 
     @Test
     public void testGetSessionExpired() {
         MongoSession session = repository.createSession();
-        session.setLastAccessedTime(0);
+        session.setLastAccessedTime(Instant.EPOCH);
         repository.save(session);
 
-        assertThat(repository.getSession(session.getId())).isNull();
+        assertThat(repository.findById(session.getId())).isNull();
     }
 
     @Test
     public void testFlush() {
         MongoSession session = repository.createSession();
-        session.setLastAccessedTime(0);
+        session.setLastAccessedTime(Instant.EPOCH);
         repository.save(session);
 
         assertThat(repository._getSession(session.getId())).isNotNull();
@@ -62,13 +64,13 @@ public class MongoSessionRepositoryIT {
     @Test
     public void testFlushPeriodically() {
         MongoSession session = repository.createSession();
-        session.setLastAccessedTime(0);
+        session.setLastAccessedTime(Instant.EPOCH);
         repository.save(session);
 
         assertThat(repository._getSession(session.getId())).isNotNull();
 
         // force flush
-        repository.lastFlushTime = System.currentTimeMillis() - MongoSessionRepository.FLUSH_INTERVAL_SECONDS * 1000;
+        repository.lastFlushTime = Instant.now().minusSeconds(MongoSessionRepository.FLUSH_INTERVAL_SECONDS);
         repository.createSession();
 
         assertThat(repository._getSession(session.getId())).isNull();

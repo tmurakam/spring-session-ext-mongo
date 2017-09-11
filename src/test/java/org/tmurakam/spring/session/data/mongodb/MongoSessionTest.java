@@ -3,6 +3,9 @@ package org.tmurakam.spring.session.data.mongodb;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.Duration;
+import java.time.Instant;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
@@ -45,41 +48,42 @@ public class MongoSessionTest {
 
     @Test
     public void testGetCreationTime() {
-        long now = System.currentTimeMillis();
-        assertThat(session.getCreationTime()).isLessThanOrEqualTo(now).isGreaterThan(now - 10000);
+        Instant now = Instant.now();
+        assertThat(session.getCreationTime()).isBeforeOrEqualTo(now).isAfter(now.minusSeconds(10));
     }
 
     @Test
     public void testGetLastAccessedTime() {
-        long now = System.currentTimeMillis();
-        assertThat(session.getLastAccessedTime()).isLessThanOrEqualTo(now).isGreaterThan(now - 10000);
+        Instant now = Instant.now();
+        assertThat(session.getLastAccessedTime()).isBeforeOrEqualTo(now).isAfter(now.minusSeconds(10));
     }
 
     @Test
     public void testSetMaxInactiveIntervalInSeconds() {
-        session.setLastAccessedTime(1000);
-        session.setMaxInactiveIntervalInSeconds(0);
+        session.setLastAccessedTime(Instant.ofEpochMilli(1000));
+        session.setMaxInactiveInterval(Duration.ZERO);
 
-        assertThat(session.getMaxInactiveIntervalInSeconds()).isEqualTo(0);
-        assertThat(session.getExpireTime()).isEqualTo(1000);
+        assertThat(session.getMaxInactiveInterval()).isEqualTo(Duration.ZERO);
+        assertThat(session.getExpireTime()).isEqualTo(Instant.ofEpochMilli(1000));
 
-        session.setMaxInactiveIntervalInSeconds(1);
-        assertThat(session.getMaxInactiveIntervalInSeconds()).isEqualTo(1);
-        assertThat(session.getExpireTime()).isEqualTo(2000);
+        session.setMaxInactiveInterval(Duration.ofSeconds(1));
+        assertThat(session.getMaxInactiveInterval()).isEqualTo(Duration.ofSeconds(1));
+        assertThat(session.getExpireTime()).isEqualTo(Instant.ofEpochMilli(2000));
     }
 
     @Test
     public void testExpireTime() {
-        session.setLastAccessedTime(0);
-        assertThat(session.getExpireTime()).isEqualTo(session.getMaxInactiveIntervalInSeconds() * 1000);
+        session.setLastAccessedTime(Instant.EPOCH);
+        assertThat(session.getExpireTime())
+                .isEqualTo(Instant.EPOCH.plusMillis(session.getMaxInactiveInterval().toMillis()));
     }
 
     @Test
     public void testIsExpired() {
-        session.setLastAccessedTime(0);
+        session.setLastAccessedTime(Instant.EPOCH);
         assertThat(session.isExpired()).isTrue();
 
-        session.setLastAccessedTime(System.currentTimeMillis());
+        session.setLastAccessedTime(Instant.now());
         assertThat(session.isExpired()).isFalse();
     }
 }
