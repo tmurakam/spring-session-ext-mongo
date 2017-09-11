@@ -35,13 +35,14 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 
 /**
  * MongoSession for spring session
  */
 @Document(collection = "springMongoSession")
 public class MongoSession implements Session {
-    public static final Duration DEFAULT_MAX_INACTIVE_INTERVAL = Duration.ofMinutes(30);
+    public static final int DEFAULT_MAX_INACTIVE_INTERVAL_IN_SEC = 30 * 60;
 
     /**
      * MongoDB Object ID
@@ -70,23 +71,23 @@ public class MongoSession implements Session {
     /**
      * Creation time
      */
-    private Instant creationTime;
+    private long creationTime;
 
     /**
      * Last accessed time
      */
-    private Instant lastAccessedTime;
+    private long lastAccessedTime;
 
     /**
      * Max inactive interval (sec)
      */
-    private Duration maxInactiveInterval;
+    private int maxInactiveIntervalInSeconds;
 
     /**
      * Expire time (epoch in ms)
      */
     @Indexed
-    private Instant expireTime;
+    private long expireTime;
     public static final String KEY_EXPIRE_TIME = "expireTime";
 
     /**
@@ -95,9 +96,9 @@ public class MongoSession implements Session {
     public MongoSession() {
         sessionId = generateId();
         attributes = new HashMap<>();
-        creationTime = Instant.now();
+        creationTime = Instant.now().toEpochMilli();
         lastAccessedTime = creationTime;
-        maxInactiveInterval = DEFAULT_MAX_INACTIVE_INTERVAL;
+        maxInactiveIntervalInSeconds = DEFAULT_MAX_INACTIVE_INTERVAL_IN_SEC;
         updateExpireTime();
     }
 
@@ -118,43 +119,43 @@ public class MongoSession implements Session {
 
     @Override
     public void setLastAccessedTime(Instant lastAccessedTime) {
-        this.lastAccessedTime = lastAccessedTime;
+        this.lastAccessedTime = lastAccessedTime.toEpochMilli();
         updateExpireTime();
     }
 
     @Override
     public Instant getCreationTime() {
-        return creationTime;
+        return Instant.ofEpochMilli(creationTime);
     }
 
     @Override
     public Instant getLastAccessedTime() {
-        return lastAccessedTime;
+        return Instant.ofEpochMilli(lastAccessedTime);
     }
 
     @Override
     public void setMaxInactiveInterval(Duration interval) {
-        maxInactiveInterval = interval;
+        maxInactiveIntervalInSeconds = (int)TimeUnit.MILLISECONDS.toSeconds(interval.toMillis());
         updateExpireTime();
     }
 
     @Override
     public Duration getMaxInactiveInterval() {
-        return maxInactiveInterval;
+        return Duration.ofSeconds(maxInactiveIntervalInSeconds);
     }
 
     protected Instant getExpireTime() {
-        return expireTime;
+        return Instant.ofEpochMilli(expireTime);
     }
 
     private void updateExpireTime() {
-        expireTime = lastAccessedTime.plusMillis(maxInactiveInterval.toMillis());
+        expireTime = lastAccessedTime + TimeUnit.SECONDS.toMillis(maxInactiveIntervalInSeconds);
     }
 
     @Override
     public boolean isExpired() {
-        Instant now = Instant.now();
-        return expireTime.isBefore(now);
+        long now = Instant.now().toEpochMilli();
+        return expireTime <= now;
     }
 
     @Override
