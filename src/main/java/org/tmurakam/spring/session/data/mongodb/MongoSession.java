@@ -22,6 +22,7 @@
 
 package org.tmurakam.spring.session.data.mongodb;
 
+import org.bson.types.Binary;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -60,7 +61,7 @@ public class MongoSession implements Session {
     /**
      * Serialized session attributes
      */
-    private byte[] serializedAttributes;
+    private Binary serializedAttributes;
 
     /**
      * Session attributes (not saved to MongoDB)
@@ -189,10 +190,10 @@ public class MongoSession implements Session {
              ObjectOutputStream oos = new ObjectOutputStream(bos)) {
             oos.writeObject(attributes);
             oos.flush();
-            serializedAttributes = bos.toByteArray();
+            serializedAttributes = new Binary(bos.toByteArray());
         } catch (IOException e) {
             //e.printStackTrace();
-            serializedAttributes = new byte[0];
+            serializedAttributes = new Binary(new byte[0]);
         }
     }
 
@@ -200,7 +201,7 @@ public class MongoSession implements Session {
      * Deserialize session attributes
      */
     public void deserializeAttributes() {
-        try (ByteArrayInputStream bis = new ByteArrayInputStream(serializedAttributes);
+        try (ByteArrayInputStream bis = new ByteArrayInputStream(serializedAttributes.getData());
              ObjectInputStream ois = new ObjectInputStream(bis))  {
             attributes = (Map<String,Object>)ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
