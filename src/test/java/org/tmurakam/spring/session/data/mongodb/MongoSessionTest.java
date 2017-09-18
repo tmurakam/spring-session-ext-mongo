@@ -1,7 +1,7 @@
 package org.tmurakam.spring.session.data.mongodb;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class MongoSessionTest {
     private MongoSession session;
 
-    @Before
+    @BeforeEach
     public void before() {
         session = new MongoSession();
     }
