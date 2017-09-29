@@ -1,8 +1,7 @@
 package sample;
 
-import com.mongodb.Mongo;
+import com.mongodb.MongoClient;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.mongodb.core.MongoClientFactoryBean;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.tmurakam.spring.session.data.mongodb.EnableMongoHttpSession;
 
@@ -12,15 +11,13 @@ import org.tmurakam.spring.session.data.mongodb.EnableMongoHttpSession;
 @EnableMongoHttpSession
 public class MongoConfig {
     @Bean
-    public MongoClientFactoryBean mongo() {
-        MongoClientFactoryBean mongo = new MongoClientFactoryBean();
-        mongo.setHost("localhost");
-        return mongo;
+    public MongoClient mongoClient() {
+        return new MongoClient("localhost");
     }
 
     @Bean
-    public MongoTemplate mongoTemplate(Mongo mongo) {
-        MongoTemplate template = new MongoTemplate(mongo, "mongoSession");
+    public MongoTemplate mongoTemplate() {
+        MongoTemplate template = new MongoTemplate(mongoClient(), "mongoSession");
         return template;
     }
 }
