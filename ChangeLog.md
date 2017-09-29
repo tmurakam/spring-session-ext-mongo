@@ -1,5 +1,9 @@
 # Change Log
 
+## 1.5.0 beta1 (2017-09-29)
+
+- Update dependencies: Spring 5.0.0 GA, Spring Data MongoDB 2.0.0 RC3. 
+
 ## 1.0.2 (2017-09-09)
 
 ### Bug fix
