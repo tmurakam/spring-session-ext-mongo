@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.5.0 (2017-10-02)
+
+### Enhancement
+
+- Update dependencies: Spring Data MongoDB 2.0.0 GA.
+
 ## 1.5.0 RC1 (2017-09-30)
 
 ### Enhancement
