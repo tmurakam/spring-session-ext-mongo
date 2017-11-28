@@ -50,9 +50,9 @@
     </repositories>
 
     <properties>
-        <spring.version>5.0.1.RELEASE</spring.version>
+        <spring.version>5.0.2.RELEASE</spring.version>
         <spring-session.version>2.0.0.RC1</spring-session.version>
-        <spring-data.version>2.0.1.RELEASE</spring-data.version>
+        <spring-data.version>2.0.2.RELEASE</spring-data.version>
         <mongo-driver.version>3.5.0</mongo-driver.version>
 
         <!--
