@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.0 (2018-01-10)
+
+### Enhancement
+
+- Update dependencies: Spring Session 2.0.0 GA.
+
 ## 1.5.0 (2017-10-02)
 
 ### Enhancement
