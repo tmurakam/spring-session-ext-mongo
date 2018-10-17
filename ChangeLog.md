@@ -1,10 +1,10 @@
 # Change Log
 
-## 2.1.1 (not yet)
+## 2.1.1 (2018-10-17)
 
 ### Enhancement
 
-- Update dependencies: Spring 5.1.1, Data Mongo 2.1.1.
+- Update dependencies: Spring 5.1.1, Session 2.1.0, Data Mongo 2.1.1.
 
 ## 2.1.0 (2018-09-25)
 
