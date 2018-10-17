@@ -50,9 +50,9 @@
     </repositories>
 
     <properties>
-        <spring.version>5.1.0.RELEASE</spring.version>
+        <spring.version>5.1.1.RELEASE</spring.version>
         <spring-session.version>2.0.6.RELEASE</spring-session.version>
-        <spring-data.version>2.1.0.RELEASE</spring-data.version>
+        <spring-data.version>2.1.1.RELEASE</spring-data.version>
         <mongo-driver.version>3.8.2</mongo-driver.version>
 
         <junit-jupiter.version>5.3.1</junit-jupiter.version>
