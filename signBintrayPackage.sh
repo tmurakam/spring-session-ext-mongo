@@ -5,7 +5,7 @@
 
 USER=tmurakam
 NAME=spring-session-ext-mongo
-VERSION=2.1.2
+VERSION=2.1.3
 
 URL=https://api.bintray.com/gpg/$USER/maven/$NAME/versions/$VERSION
 
