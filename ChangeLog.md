@@ -1,6 +1,6 @@
 # Change Log
 
-## 2.1.4 (NOT YET RELEASED)
+## 2.1.4 (2019-02-19)
 
 ### Enhancement
 
