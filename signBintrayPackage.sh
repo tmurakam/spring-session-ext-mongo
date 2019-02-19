@@ -3,9 +3,16 @@
 
 . ./bintray.config
 
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <version>"
+    exit 0
+fi
+
 USER=tmurakam
 NAME=spring-session-ext-mongo
-VERSION=2.1.3
+VERSION=$1
+
+echo "Signing version $VERSION..."
 
 URL=https://api.bintray.com/gpg/$USER/maven/$NAME/versions/$VERSION
 
