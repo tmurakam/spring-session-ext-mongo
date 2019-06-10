@@ -4,7 +4,7 @@
 
 ### Enhancement
 
-- Update dependencies: Spring 5.1.7, Session 2.1.6, Data Mongo 2.1.8.
+- Update dependencies: Spring 5.1.7, Session 2.1.6, Data Mongo 2.1.8, Mongo Driver 3.10.2.
 
 ## 2.1.5 (2019-04-12)
 
