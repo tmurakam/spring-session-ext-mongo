@@ -1,10 +1,10 @@
 # Change Log
 
-## 2.1.6 (2019-XX-XX)
+## 2.1.6 (2019-07-10)
 
 ### Enhancement
 
-- Update dependencies: Spring 5.1.7, Session 2.1.6, Data Mongo 2.1.8, Mongo Driver 3.10.2.
+- Update dependencies: Spring 5.1.8, Session 2.1.7, Data Mongo 2.1.9, Mongo Driver 3.10.2.
 
 ## 2.1.5 (2019-04-12)
 
