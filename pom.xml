@@ -50,14 +50,20 @@
     </repositories>
 
     <properties>
-        <spring.version>5.1.9.RELEASE</spring.version>
-        <spring-session.version>2.1.8.RELEASE</spring-session.version>
-        <spring-data.version>2.1.10.RELEASE</spring-data.version>
+        <spring.version>5.1.17.RELEASE</spring.version>
+        <spring-session.version>2.1.12.RELEASE</spring-session.version>
+        <spring-data.version>2.1.19.RELEASE</spring-data.version>
         <mongo-driver.version>3.11.0</mongo-driver.version>
+        <!--
+        <spring.version>5.2.8.RELEASE</spring.version>
+        <spring-session.version>2.3.0.RELEASE</spring-session.version>
+        <spring-data.version>2.2.9.RELEASE</spring-data.version>
+        <mongo-driver.version>3.12.7</mongo-driver.version>
+        -->
 
-        <junit-jupiter.version>5.5.2</junit-jupiter.version>
-        <junit-platform.version>1.5.2</junit-platform.version>
-        <assertj-core.version>3.13.2</assertj-core.version>
+        <junit-jupiter.version>5.6.2</junit-jupiter.version>
+        <junit-platform.version>1.6.2</junit-platform.version>
+        <assertj-core.version>3.16.1</assertj-core.version>
     </properties>
 
     <!-- deploy to bintray/jcenter -->
