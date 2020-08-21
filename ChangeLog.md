@@ -2,7 +2,7 @@
 
 ## 2.1.8 (2020-08-XX)
 
-- Update dependencies: Spring 5.2.8, Session 2.1.12, Data Mongo 2.2.9, Mongo Driver 3.12.7.
+- Update dependencies: Spring 5.2.8, Session 2.3.0, Data Mongo 2.2.9, Mongo Driver 3.12.7.
 
 ## 2.1.7 (2019-08-19)
 

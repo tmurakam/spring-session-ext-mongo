@@ -26,17 +26,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.session.web.http.SessionRepositoryFilter;
 
-import javax.servlet.ServletContext;
-
 /**
  * MongoSession Configuration
  */
 @Configuration
 public class MongoSessionConfiguration {
     @Bean
-    public SessionRepositoryFilter<MongoSession> springSessionRepositoryFilter(MongoSessionRepository repository, ServletContext servletContext) {
+    public SessionRepositoryFilter<MongoSession> springSessionRepositoryFilter(MongoSessionRepository repository) {
         SessionRepositoryFilter<MongoSession> filter = new SessionRepositoryFilter<>(repository);
-        filter.setServletContext(servletContext);
+        //filter.setServletContext(servletContext);
         return filter;
     }
 

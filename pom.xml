@@ -51,7 +51,7 @@
 
     <properties>
         <spring.version>5.2.8.RELEASE</spring.version>
-        <spring-session.version>2.1.12.RELEASE</spring-session.version>
+        <spring-session.version>2.3.0.RELEASE</spring-session.version>
         <spring-data.version>2.2.9.RELEASE</spring-data.version>
         <mongo-driver.version>3.12.7</mongo-driver.version>
         <!--
