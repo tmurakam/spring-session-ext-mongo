@@ -61,9 +61,9 @@
         <mongo-driver.version>3.12.7</mongo-driver.version>
         -->
 
-        <junit-jupiter.version>5.6.2</junit-jupiter.version>
-        <junit-platform.version>1.6.2</junit-platform.version>
-        <assertj-core.version>3.16.1</assertj-core.version>
+        <junit-jupiter.version>5.7.1</junit-jupiter.version>
+        <junit-platform.version>1.7.1</junit-platform.version>
+        <assertj-core.version>3.19.0</assertj-core.version>
     </properties>
 
     <distributionManagement>
