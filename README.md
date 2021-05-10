@@ -13,6 +13,9 @@ Which version?
 * ver 1.0.x depends on Spring Framework 4.x, Spring Data MongoDB 1.x, and Spring Session 1.x.
 * ver 1.5.x depends on Spring Framework 5.x, Spring Data MongoDB 2.x, and Spring Session 1.x.
 * ver 2.0.x depends on Spring Framework 5.x, Spring Data MongoDB 2.x, and Spring Session 2.x.
+* ver 2.1.x depends on Spring Framework 5.1.x, Spring Data MongoDB 2.1.x, and Spring Session 2.1.x.
+* ver 2.2.x depends on Spring Framework 5.2.x, Spring Data MongoDB 2.2.x, and Spring Session 2.3.x, Mongo Driver 3.x.
+* ver 2.3.x depends on Spring Framework 5.3.x, Spring Data MongoDB 3.2.x, and Spring Session 2.4.x, Mongo Driver 4.x.
 
 Usage
 -----
