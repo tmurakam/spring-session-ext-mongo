@@ -1,6 +1,8 @@
 Spring Session with MongoDB backend
 ===================================
 
+- 2.3/develop: [![Build Status](https://travis-ci.org/tmurakam/spring-session-ext-mongo.svg?branch=2.3/develop)](https://travis-ci.org/tmurakam/spring-session-ext-mongo)
+- 2.2/develop: [![Build Status](https://travis-ci.org/tmurakam/spring-session-ext-mongo.svg?branch=2.2/develop)](https://travis-ci.org/tmurakam/spring-session-ext-mongo)
 - 2.0/develop: [![Build Status](https://travis-ci.org/tmurakam/spring-session-ext-mongo.svg?branch=2.0/develop)](https://travis-ci.org/tmurakam/spring-session-ext-mongo)
 - 1.5/develop: [![Build Status](https://travis-ci.org/tmurakam/spring-session-ext-mongo.svg?branch=1.5/develop)](https://travis-ci.org/tmurakam/spring-session-ext-mongo)
 - 1.0/develop: [![Build Status](https://travis-ci.org/tmurakam/spring-session-ext-mongo.svg?branch=1.0/develop)](https://travis-ci.org/tmurakam/spring-session-ext-mongo)
