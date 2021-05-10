@@ -1,6 +1,7 @@
 package org.tmurakam.spring.session.data.mongodb;
 
-import com.mongodb.MongoClient;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.core.MongoTemplate;
 
@@ -20,7 +21,7 @@ public class TestMongoConfiguration {
 
     @Bean
     public MongoClient mongoClient() {
-        return new MongoClient("localhost");
+        return MongoClients.create("mongodb://localhost");
     }
 
     @Bean

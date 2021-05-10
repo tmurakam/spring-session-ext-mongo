@@ -53,7 +53,7 @@
         <spring.version>5.3.6</spring.version>
         <spring-session.version>2.4.3</spring-session.version>
         <spring-data.version>3.2.0</spring-data.version>
-        <mongo-driver.version>3.12.7</mongo-driver.version>
+        <mongo-driver.version>4.2.3</mongo-driver.version>
         <!--
         <spring-session.version>2.3.0.RELEASE</spring-session.version>
         -->
@@ -105,7 +105,7 @@
         </dependency>
         <dependency>
             <groupId>org.mongodb</groupId>
-            <artifactId>mongodb-driver</artifactId>
+            <artifactId>mongodb-driver-sync</artifactId>
             <version>${mongo-driver.version}</version>
         </dependency>
 
