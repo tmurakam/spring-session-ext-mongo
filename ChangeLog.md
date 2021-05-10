@@ -1,5 +1,9 @@
 # Change Log
 
+## 2.3.0 (2021-xx-xx)
+
+- Update dependencies: Spring 5.3.6, Session 2.4.3, Data Mongo 3.2.0, Mongo Driver(Sync) 4.2.3.
+
 ## 2.2.0 (2020-09-09)
 
 - Update dependencies: Spring 5.2.8, Session 2.3.0, Data Mongo 2.2.9, Mongo Driver 3.12.7.
