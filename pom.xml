@@ -6,7 +6,7 @@
     
     <groupId>org.tmurakam</groupId>
     <artifactId>spring-session-ext-mongo</artifactId>
-    <version>2.2.0</version>
+    <version>2.3.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     
     <name>spring-session-ext-mongo</name>
@@ -50,9 +50,9 @@
     </repositories>
 
     <properties>
-        <spring.version>5.2.8.RELEASE</spring.version>
-        <spring-session.version>2.3.0.RELEASE</spring-session.version>
-        <spring-data.version>2.2.9.RELEASE</spring-data.version>
+        <spring.version>5.3.6</spring.version>
+        <spring-session.version>2.4.3</spring-session.version>
+        <spring-data.version>3.2.0</spring-data.version>
         <mongo-driver.version>3.12.7</mongo-driver.version>
         <!--
         <spring-session.version>2.3.0.RELEASE</spring-session.version>
