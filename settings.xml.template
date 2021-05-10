@@ -4,9 +4,22 @@
           xmlns='http://maven.apache.org/SETTINGS/1.0.0' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
     <servers>
         <server>
-            <id>bintray-tmurakam-maven</id>
-            <username>tmurakam</username>
-            <password>API_KEY_HERE</password>
+            <id>ossrh</id>
+            <username>YOUR-ID</username>
+            <password>YOUR-PASSWORD</password>
         </server>
     </servers>
+
+    <profiles>
+        <profile>
+            <id>ossrh</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <gpg.executable>gpg</gpg.executable>
+                <gpg.passphrase>YOUR-GPG-PASSPHRASE</gpg.passphrase>
+            </properties>
+        </profile>
+    </profiles>
 </settings>

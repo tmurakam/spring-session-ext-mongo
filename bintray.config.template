@@ -1,7 +1,0 @@
-## used from signBintrayPackage.sh
-
-# bintray API key
-export APIKEY=
-
-# bintray GPG passphrase
-export PASSPHRASE=
