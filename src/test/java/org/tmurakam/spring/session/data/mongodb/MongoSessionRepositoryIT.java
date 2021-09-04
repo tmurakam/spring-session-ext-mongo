@@ -22,7 +22,7 @@ public class MongoSessionRepositoryIT {
     MongoSessionRepository repository;
 
     @Test
-    public void test() {
+    public void testGetRepository() {
         assertThat(repository).isNotNull();
     }
 
