@@ -7,7 +7,7 @@ This is a Spring Session extension which uses MongoDB as a session storage.
 
 ## Which version?
 
-* ver 2.3.x depends on Spring Framework 5.3.x, Spring Data MongoDB 3.2.x, and Spring Session 2.4.x, Mongo Driver 4.x.
+* ver 2.3.x depends on Spring Framework 5.3.x, Spring Data MongoDB 3.3.x, and Spring Session 2.6.x, Mongo Driver 4.x.
 * ver 2.2.x depends on Spring Framework 5.2.x, Spring Data MongoDB 2.2.x, and Spring Session 2.3.x, Mongo Driver 3.x.
 
 Followings are already EOL because of EOL of Spring Framework.
