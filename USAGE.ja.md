@@ -12,12 +12,8 @@ build.gradle に dependency を追加します。
 (maven の場合は pom.xml に同様の設定を追加)
 
 ```groovy
-repositories {
-    jcenter()
-}
-
 dependencies {
-    compile 'org.tmurakam:spring-session-ext-mongo:2.0.0'
+    compile 'org.tmurakam:spring-session-ext-mongo:2.3.2'
 }
 ```
 
@@ -36,21 +32,11 @@ MongoDB に接続するための設定用 Java クラスを作成してくださ
 @EnableMongoHttpSession を必ず指定する必要があります。
 
 ```java
-package com.example;
-
 @EnableMongoHttpSession
-public class MyMongoConfiguration {
-    @Bean
-    public MongoClientFactoryBean mongo() {
-        MongoClientFactoryBean mongo = new MongoClientFactoryBean();
-        mongo.setHost("localhost");
-        return mongo;
-    }
-
-    @Bean
-    public MongoTemplate mongoTemplate(Mongo mongo) {
-        MongoTemplate template = new MongoTemplate(mongo, "mongoSession");
-        return template;
+public class MongoConfig extends AbstractMongoClientConfiguration {
+    @Override
+    protected String getDatabaseName() {
+        return "mongoSession";
     }
 }
 ```

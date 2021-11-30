@@ -9,12 +9,8 @@ Add Dependency
 Add dependency to build.gradle:
 
 ```groovy
-repositories {
-    jcenter()
-}
-
 dependencies {
-    compile 'org.tmurakam:spring-session-ext-mongo:2.0.0'
+    compile 'org.tmurakam:spring-session-ext-mongo:2.3.2'
 }
 ```
 
@@ -32,21 +28,11 @@ First, create Java configuration class for MongoDB.
 This must annotated with @EnableMongoHttpSession.
 
 ```java
-package com.example;
-
 @EnableMongoHttpSession
-public class MyMongoConfiguration {
-    @Bean
-    public MongoClientFactoryBean mongo() {
-        MongoClientFactoryBean mongo = new MongoClientFactoryBean();
-        mongo.setHost("localhost");
-        return mongo;
-    }
-
-    @Bean
-    public MongoTemplate mongoTemplate(Mongo mongo) {
-        MongoTemplate template = new MongoTemplate(mongo, "mongoSession");
-        return template;
+public class MongoConfig extends AbstractMongoClientConfiguration {
+    @Override
+    protected String getDatabaseName() {
+        return "mongoSession";
     }
 }
 ```
