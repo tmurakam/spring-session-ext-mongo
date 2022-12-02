@@ -50,11 +50,10 @@
     </repositories>
 
     <properties>
-        <spring.version>5.3.13</spring.version>
-        <spring-session.version>2.6.0</spring-session.version>
-        <spring-data.version>3.3.5</spring-data.version>
-        <mongo-driver.version>4.4.0</mongo-driver.version>
-        <!--<mongo-driver.version>4.3.1</mongo-driver.version>--><!-- does not work with spring data 3.2.4 -->
+        <spring.version>5.3.24</spring.version>
+        <spring-session.version>2.7.0</spring-session.version>
+        <spring-data.version>3.4.6</spring-data.version>
+        <mongo-driver.version>4.6.1</mongo-driver.version>  <!-- This must match with spring-data-mongodb dependencies -->
 
         <junit-jupiter.version>5.9.1</junit-jupiter.version>
         <junit-platform.version>1.9.1</junit-platform.version>
@@ -160,7 +159,7 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.2.5</version>
+            <version>1.4.5</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
