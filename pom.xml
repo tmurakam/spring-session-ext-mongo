@@ -56,9 +56,9 @@
         <mongo-driver.version>4.4.0</mongo-driver.version>
         <!--<mongo-driver.version>4.3.1</mongo-driver.version>--><!-- does not work with spring data 3.2.4 -->
 
-        <junit-jupiter.version>5.7.2</junit-jupiter.version>
-        <junit-platform.version>1.7.2</junit-platform.version>
-        <assertj-core.version>3.20.2</assertj-core.version>
+        <junit-jupiter.version>5.9.1</junit-jupiter.version>
+        <junit-platform.version>1.9.1</junit-platform.version>
+        <assertj-core.version>3.23.1</assertj-core.version>
     </properties>
 
     <distributionManagement>
