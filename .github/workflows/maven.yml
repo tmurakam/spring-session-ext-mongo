@@ -10,9 +10,13 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "2.3/develop" ]
+    branches:
+     - "2.3/develop"
+     - "3.0/develop"
   pull_request:
-    branches: [ "2.3/develop" ]
+    branches:
+     - "2.3/develop"
+     - "3.0/develop"
 
 jobs:
   build:
@@ -21,10 +25,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Set up JDK 8
+    - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
-        java-version: '8'
+        java-version: '17'
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
