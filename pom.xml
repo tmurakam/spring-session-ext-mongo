@@ -6,7 +6,7 @@
     
     <groupId>org.tmurakam</groupId>
     <artifactId>spring-session-ext-mongo</artifactId>
-    <version>2.3.4</version>
+    <version>3.0.0</version>
     <packaging>jar</packaging>
     
     <name>spring-session-ext-mongo</name>
