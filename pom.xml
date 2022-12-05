@@ -52,7 +52,7 @@
     <properties>
         <spring.version>5.3.24</spring.version>
         <spring-session.version>2.7.0</spring-session.version>
-        <spring-data.version>3.4.6</spring-data.version>
+        <spring-data-mongodb.version>3.4.6</spring-data-mongodb.version>
         <mongo-driver.version>4.6.1</mongo-driver.version>  <!-- This must match with spring-data-mongodb dependencies -->
 
         <junit-jupiter.version>5.9.1</junit-jupiter.version>
@@ -98,7 +98,7 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-mongodb</artifactId>
-            <version>${spring-data.version}</version>
+            <version>${spring-data-mongodb.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mongodb</groupId>
