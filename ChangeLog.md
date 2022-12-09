@@ -1,4 +1,9 @@
 # Change Log
+
+## 3.0.0 (2022-12-10)
+
+- Initial support for Spring 6, Java 17.
+- Update dependencies: Spring 6.0.2, Session 3.0.0, Data Mongo 4.0.0, Mongo Driver(Sync) 4.8.0.
                         
 ## 2.3.3 (2022-12-02)
 
