@@ -55,9 +55,9 @@
         <spring-data-mongodb.version>4.0.0</spring-data-mongodb.version>
         <mongo-driver.version>4.8.0</mongo-driver.version>  <!-- This must match with spring-data-mongodb dependencies -->
 
-        <junit-jupiter.version>5.9.1</junit-jupiter.version>
-        <junit-platform.version>1.9.1</junit-platform.version>
-        <assertj-core.version>3.23.1</assertj-core.version>
+        <junit-jupiter.version>5.9.2</junit-jupiter.version>
+        <junit-platform.version>1.9.2</junit-platform.version>
+        <assertj-core.version>3.24.2</assertj-core.version>
     </properties>
 
     <distributionManagement>
