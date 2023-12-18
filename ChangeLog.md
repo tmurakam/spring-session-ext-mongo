@@ -1,8 +1,8 @@
 # Change Log
 
-# 3.0.1 (2023-xx-xx)
+# 3.0.1 (2023-12-18)
 
-- Update dependencies: Spring 6.0.9, Session 3.1.0, Data Mongo 4.0.2, Mongo Driver(Sync) 4.8.2.
+- Update dependencies: Spring 6.1.1, Session 3.2.0, Data Mongo 4.2.0, Mongo Driver(Sync) 4.11.1.
 
 ## 3.0.0 (2022-12-10)
 

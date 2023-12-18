@@ -50,10 +50,10 @@
     </repositories>
 
     <properties>
-        <spring.version>6.0.9</spring.version>
-        <spring-session.version>3.1.0</spring-session.version>
-        <spring-data-mongodb.version>4.0.2</spring-data-mongodb.version>
-        <mongo-driver.version>4.8.2</mongo-driver.version>  <!-- This must match with spring-data-mongodb dependencies -->
+        <spring.version>6.1.1</spring.version>
+        <spring-session.version>3.2.0</spring-session.version>
+        <spring-data-mongodb.version>4.2.0</spring-data-mongodb.version>
+        <mongo-driver.version>4.11.1</mongo-driver.version>  <!-- This must match with spring-data-mongodb dependencies -->
 
         <junit-jupiter.version>5.9.2</junit-jupiter.version>
         <junit-platform.version>1.9.2</junit-platform.version>
