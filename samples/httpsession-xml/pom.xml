@@ -6,7 +6,7 @@
 
     <groupId>org.tmurakam</groupId>
     <artifactId>spring-session-ext-mongo-sample-xml</artifactId>
-    <version>3.1.0</version>
+    <version>3.3.0</version>
     <packaging>war</packaging>
     <name>XML config sample</name>
 

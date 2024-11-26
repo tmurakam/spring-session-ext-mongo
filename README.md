@@ -1,12 +1,15 @@
 # Spring Session with MongoDB backend
 
+- 3.4/develop: ![3.4/develop](https://github.com/tmurakam/spring-session-ext-mongo/actions/workflows/maven.yml/badge.svg?branch=3.4/develop)
+- 3.3/develop: ![3.3/develop](https://github.com/tmurakam/spring-session-ext-mongo/actions/workflows/maven.yml/badge.svg?branch=3.3/develop)
 - 3.2/develop: ![3.2/develop](https://github.com/tmurakam/spring-session-ext-mongo/actions/workflows/maven.yml/badge.svg?branch=3.2/develop)
 
 This is a Spring Session extension which uses MongoDB as a session storage.
 
 ## Which version?
 
-* ver 3.2.x depends on JDK 17, Spring Boot 3.2.x, Spring Framework 6.1.x, Spring Session 3.2.x, Spring Data MongoDB 4.2.x and Mongo Driver 4.x.
+* ver 3.3.x depends on Spring Boot 3.3.x, Spring Framework 6.1.x, Spring Session 3.3.x, Spring Data MongoDB 4.3.x and Mongo Driver 5.x.
+* ver 3.2.x depends on Spring Boot 3.2.x, Spring Framework 6.1.x, Spring Session 3.2.x, Spring Data MongoDB 4.2.x and Mongo Driver 4.x.
 
 Followings are already EOL because of EOL of Spring Framework.
 
