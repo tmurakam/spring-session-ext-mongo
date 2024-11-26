@@ -11,12 +11,10 @@ name: Java CI with Maven
 on:
   push:
     branches:
-     - "2.3/develop"
-     - "3.0/develop"
+     - "3.2/develop"
   pull_request:
     branches:
-     - "2.3/develop"
-     - "3.0/develop"
+     - "3.2/develop"
 
 jobs:
   build:
