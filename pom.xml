@@ -6,7 +6,7 @@
     
     <groupId>org.tmurakam</groupId>
     <artifactId>spring-session-ext-mongo</artifactId>
-    <version>3.3.0</version>
+    <version>3.4.0</version>
     <packaging>jar</packaging>
     
     <name>spring-session-ext-mongo</name>
@@ -50,7 +50,7 @@
     </repositories>
 
     <properties>
-        <spring-boot.version>3.3.6</spring-boot.version>
+        <spring-boot.version>3.4.0</spring-boot.version>
     </properties>
 
     <distributionManagement>

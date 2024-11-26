@@ -8,6 +8,7 @@ This is a Spring Session extension which uses MongoDB as a session storage.
 
 ## Which version?
 
+* ver 3.4.x depends on Spring Boot 3.4.x, Spring Framework 6.2.x, Spring Session 3.4.x, Spring Data MongoDB 4.4.x and Mongo Driver 5.x.
 * ver 3.3.x depends on Spring Boot 3.3.x, Spring Framework 6.1.x, Spring Session 3.3.x, Spring Data MongoDB 4.3.x and Mongo Driver 5.x.
 * ver 3.2.x depends on Spring Boot 3.2.x, Spring Framework 6.1.x, Spring Session 3.2.x, Spring Data MongoDB 4.2.x and Mongo Driver 4.x.
 
