@@ -1,8 +1,6 @@
 # Spring Session with MongoDB backend
 
-- 3.4/develop: ![3.4/develop](https://github.com/tmurakam/spring-session-ext-mongo/actions/workflows/maven.yml/badge.svg?branch=3.4/develop)
-- 3.3/develop: ![3.3/develop](https://github.com/tmurakam/spring-session-ext-mongo/actions/workflows/maven.yml/badge.svg?branch=3.3/develop)
-- 3.2/develop: ![3.2/develop](https://github.com/tmurakam/spring-session-ext-mongo/actions/workflows/maven.yml/badge.svg?branch=3.2/develop)
+- develop: ![develop](https://github.com/tmurakam/spring-session-ext-mongo/actions/workflows/maven.yml/badge.svg?branch=develop)
 
 This is a Spring Session extension which uses MongoDB as a session storage.
 
