@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.5.8 (2025-11-20)
+
+- Update dependencies: Spring Boot 3.5.8, Spring 6.2.14, Session 3.5.3, Data Mongo 4.5.6, Mongo Driver(Sync) 5.5.2.
+
 ## 3.5.7 (2025-10-25)
 
 - Update dependencies: Spring Boot 3.5.7, Spring 6.2.12, Session 3.5.3, Data Mongo 4.5.5, Mongo Driver(Sync) 5.5.2.
